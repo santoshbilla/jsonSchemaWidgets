@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '../../../node_modules/@angular/common/http';
-
+import {JsonSchemaService} from '../json-schema.service'
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
@@ -8,13 +7,14 @@ import { HttpClient } from '../../../node_modules/@angular/common/http';
 })
 export class SchemaComponent implements OnInit {
 yourJsonSchema;
-  constructor(private http: HttpClient) { }
+  constructor(private jsonSchema : JsonSchemaService) { }
 
   ngOnInit() {
-    this.http.get("..//assets/yourJsonSchema.json")
-    .subscribe((res)=>{console.log(res);
-      this.yourJsonSchema = res;
-  }); 
+   
+ this.jsonSchema.getSchema()
+ .subscribe((data)=>{
+    this.yourJsonSchema = data;
+   });
 }
 
 }
