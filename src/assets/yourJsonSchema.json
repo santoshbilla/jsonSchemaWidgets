@@ -1,27 +1,30 @@
 {
-  "type": "object",
-  "title" : "registrationForm",
-
-  "properties" : {
-
-    "firstname" : {
-      "type": "string"
+    "type": "object",
+    "title": "Comment",
+    "properties": {
+      
+      "name": {
+        
+        "title": "Name",
+        "type": "string"
+      },
+      "email": {
+        "title": "Email",
+        "type": "string",
+        "pattern": "^\\S+@\\S+$",
+        "description": "Email will be used for evil."
+      },
+      "comment": {
+        "title": "Comment",
+        "type": "string",
+        "maxLength": 20,
+        "validationMessage": "Don't be greedy!"
+      }
+   
     },
-   "lastname" : {
-      "type": "string"
-    },
-  "passwd" : {
-      "type": "string"
-    },
-   "address": {
-      "type": "string"
-    },
-     "city": {
-      "type": "string"
-    },
-     "state": {
-      "type": "string"
-    }
-    },
-     "required": ["firstname","lastname","passwd"]  
-}
+    "required": [
+      "name",
+      "email",
+      "comment"
+    ]
+  }

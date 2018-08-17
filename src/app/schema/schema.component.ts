@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {JsonSchemaService} from '../json-schema.service'
+
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',

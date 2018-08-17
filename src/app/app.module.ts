@@ -1,11 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { Bootstrap4FrameworkModule} from 'angular6-json-schema-form';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+
 
 import { AppComponent } from './app.component';
 import { SchemaComponent } from './schema/schema.component';
+import { MaterialDesignFrameworkModule } from 'angular6-json-schema-form';
 
 @NgModule({
   declarations: [
@@ -14,9 +17,11 @@ import { SchemaComponent } from './schema/schema.component';
   ],
   imports: [
     BrowserModule,
-    Bootstrap4FrameworkModule,
     FlexLayoutModule,
-    HttpClientModule
+    HttpClientModule, 
+    MaterialDesignFrameworkModule,
+    BrowserAnimationsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
