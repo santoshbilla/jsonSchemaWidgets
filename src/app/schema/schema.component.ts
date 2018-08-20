@@ -12,13 +12,10 @@ yourJsonSchema : any;
   ngOnInit() {
     // Define the JSON Schema as an object because [schema] in view takes an object
     this.yourJsonSchema = {
-    "schema":
-      {
-        "type": "object",
+      "schema": {
         "title": "Comment",
-        "required": [
-          "comments"
-        ],
+        "type": "object",
+        "required": [ "comments" ],
         "properties": {
           "comments": {
             "type": "array",
@@ -48,46 +45,36 @@ yourJsonSchema : any;
                   "validationMessage": "Don't be greedy!"
                 }
               },
-              "required": [
-                "name",
-                "comment"
-              ]
+              "required": [ "name", "comment" ]
             }
           }
         }
       },
-    "layout": [
-      {
-        "type": "help",
-        "helpvalue": "<h4>Array Example</h4><p>Try adding a couple of forms, reorder by drag'n'drop.</p>"
-      },
-      {
-        "key": "comments",
-        "add": "New",
-        "style": {
-          "add": "btn-success"
+      "form": [
+        { "type": "help",
+          "helpvalue": "<h4>Array Example</h4><p>Try adding a couple of forms, reorder by drag'n'drop.</p>"
         },
-        "items": [
-          "comments[].name",
-          "comments[].email",
-          {
-            "key": "comments[].spam",
-            "type": "checkbox",
-            "title": "Yes I want spam.",
-            "condition": "model.comments[arrayIndex].email"
-          },
-          {
-            "key": "comments[].comment",
-            "type": "textarea"
-          }
-        ]
-      },
-      {
-        "type": "submit",
-        "style": "btn-info",
-        "title": "OK"
-      }
-    ]
+        { "key": "comments",
+          "add": "New",
+          "style": { "add": "btn-success" },
+          "items": [
+            "comments[].name",
+            "comments[].email",
+            { "title": "Yes I want spam.",
+              "type": "checkbox",
+              "key": "comments[].spam",
+              "condition": "model.comments[arrayIndex].email"
+            },
+            { "type": "textarea",
+              "key": "comments[].comment"
+            }
+          ]
+        },
+        { "title": "OK",
+          "type": "submit",
+          "style": "btn-info"
+        }
+      ]
     };
  }
 
