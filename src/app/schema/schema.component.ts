@@ -15,47 +15,79 @@ yourJsonSchema : any;
     "schema":
       {
         "type": "object",
+        "title": "Comment",
+        "required": [
+          "comments"
+        ],
         "properties": {
-          "first_name": { "type": "string" },
-          "last_name": { "type": "string" },
-          "phone":{"type": "number"},
-          "email": {
-            "type": "string",
-            "pattern": "^\\S+@\\S+$",
-            "description": "Email will be used for evil."
-          },
-          "language":{
-            "type":"string",
-            "description":"this is done using Angular Schema Forms"
-          },
-          "language1": {
-            "description": "this is done using JSON Schema v4+",
-            "type": "string",
-            "oneOf":  [
-              { "title": "MongoDB",    "enum": [ "MongoDB" ] },
-              { "title": "ExpressJS",  "enum": [ "ExpressJS" ] },
-              { "title": "Angular",    "enum": [ "Angular"  ] },
-              { "title": "NodeJs",     "enum": [ "NodeJs"  ] }
-            ]
-          },
+          "comments": {
+            "type": "array",
+            "maxItems": 2,
+            "items": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "title": "Name",
+                  "type": "string"
+                },
+                "email": {
+                  "title": "Email",
+                  "type": "string",
+                  "pattern": "^\\S+@\\S+$",
+                  "description": "Email will be used for evil."
+                },
+                "spam": {
+                  "title": "Spam",
+                  "type": "boolean",
+                  "default": true
+                },
+                "comment": {
+                  "title": "Comment",
+                  "type": "string",
+                  "maxLength": 20,
+                  "validationMessage": "Don't be greedy!"
+                }
+              },
+              "required": [
+                "name",
+                "comment"
+              ]
+            }
+          }
+        }
+      },
+    "layout": [
+      {
+        "type": "help",
+        "helpvalue": "<h4>Array Example</h4><p>Try adding a couple of forms, reorder by drag'n'drop.</p>"
+      },
+      {
+        "key": "comments",
+        "add": "New",
+        "style": {
+          "add": "btn-success"
         },
-        "required": [ "last_name" ,"phone", "email"],
+        "items": [
+          "comments[].name",
+          "comments[].email",
+          {
+            "key": "comments[].spam",
+            "type": "checkbox",
+            "title": "Yes I want spam.",
+            "condition": "model.comments[arrayIndex].email"
+          },
+          {
+            "key": "comments[].comment",
+            "type": "textarea"
+          }
+        ]
       },
-    "layout":  [
-        { "type": "flex", "flex-flow": "row wrap", "items": [ "first_name", "last_name" ] },
-        {"key": "phone", "title":"phone number", "placeholder":"Enter number here"},
-        {"key":"email", "title":"Email Id", "placeholder":"Enter Email ID Here"},
-        {
-          "key":"language","titleMap": 
-          [
-            { "name": "MongoDB","value": "MongoDB" },
-            { "name": "ExpressJS","value": "ExpressJS" },
-            { "name": "Angular","value": "Angular"  },
-            { "name": "NodeJs", "value": "NodeJs"  }
-          ]
-      },
-     "language1"
-      ],
+      {
+        "type": "submit",
+        "style": "btn-info",
+        "title": "OK"
+      }
+    ]
     };
  }
 
