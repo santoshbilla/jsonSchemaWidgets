@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import {JsonSchemaService} from '../json-schema.service'
 
 @Component({
   selector: 'app-schema',
@@ -8,15 +7,21 @@ import {JsonSchemaService} from '../json-schema.service'
 })
 export class SchemaComponent implements OnInit {
 yourJsonSchema : any;
-  constructor(private jsonSchema : JsonSchemaService) { }
+  constructor() { }
 
   ngOnInit() {
-   
- this.jsonSchema.getSchema()
- .subscribe((data)=>{
-    this.yourJsonSchema = data;
-    console.log(this.yourJsonSchema);
-   });
-}
+    // Define the JSON Schema as an object because [schema] in view takes an object
+    this.yourJsonSchema = {
+      "type": "object",
+      "properties":{
+        "comment": {
+           "title": "Comment",
+           "type": "string"
+         }
+      },
+      
+
+    };
+ }
 
 }
