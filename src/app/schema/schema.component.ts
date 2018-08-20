@@ -11,71 +11,46 @@ yourJsonSchema : any;
 
   ngOnInit() {
     // Define the JSON Schema as an object because [schema] in view takes an object
-    this.yourJsonSchema = {
-      "schema": {
-        "title": "Comment",
-        "type": "object",
-        "required": [ "comments" ],
-        "properties": {
-          "comments": {
-            "type": "array",
-            "maxItems": 2,
-            "items": {
-              "type": "object",
-              "properties": {
-                "name": {
-                  "title": "Name",
-                  "type": "string"
-                },
-                "email": {
-                  "title": "Email",
-                  "type": "string",
-                  "pattern": "^\\S+@\\S+$",
-                  "description": "Email will be used for evil."
-                },
-                "spam": {
-                  "title": "Spam",
-                  "type": "boolean",
-                  "default": true
-                },
-                "comment": {
-                  "title": "Comment",
-                  "type": "string",
-                  "maxLength": 20,
-                  "validationMessage": "Don't be greedy!"
-                }
+      this.yourJsonSchema = 
+        {
+            "schema":
+            {
+                "type":"object",
+            "properties": {
+              "radios": {
+                "title": "Basic radio button example",
+                "type": "string",
+                "enum": [ "a", "b", "c" ]
               },
-              "required": [ "name", "comment" ]
-            }
-          }
-        }
-      },
-      "form": [
-        { "type": "help",
-          "helpvalue": "<h4>Array Example</h4><p>Try adding a couple of forms, reorder by drag'n'drop.</p>"
-        },
-        { "key": "comments",
-          "add": "New",
-          "style": { "add": "btn-success" },
-          "items": [
-            "comments[].name",
-            "comments[].email",
-            { "title": "Yes I want spam.",
-              "type": "checkbox",
-              "key": "comments[].spam",
-              "condition": "model.comments[arrayIndex].email"
+              "devices":{
+                "type": "array",
+                "title": "devices",
+                "items":
+                  {
+                    "type": "string",
+                    "enum": ["Mobile","Tablet", "Desktop"]
+                  }
+                }, 
             },
-            { "type": "textarea",
-              "key": "comments[].comment"
-            }
-          ]
-        },
-        { "title": "OK",
-          "type": "submit",
-          "style": "btn-info"
-        }
-      ]
-    };
- }
-
+          },
+            "layout":  
+            [
+            { "key": "radios",
+              "type": "radios",
+              "titleMap": [
+                { "value": "c", "name": "C" },
+                { "value": "b", "name": "B" },
+                { "value": "a", "name": "A" }
+              ]},
+              {
+                "key": "devices",
+                "type":"checkboxes",
+                "titleMap":[
+                  {"value":"Mobile", "name":"Mobile"},
+                  {"value":"Tablet", "name":"Tablet"},
+                  {"value":"Desktop", "name":"Desktop"}
+                ]}
+          ]   
+  }; 
+  }
 }
