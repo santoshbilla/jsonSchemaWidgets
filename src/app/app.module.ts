@@ -8,8 +8,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SchemaComponent } from './schema/schema.component';
-import { MaterialDesignFrameworkModule } from 'angular6-json-schema-form';
-
+import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,9 +18,8 @@ import { MaterialDesignFrameworkModule } from 'angular6-json-schema-form';
     BrowserModule,
     FlexLayoutModule,
     HttpClientModule, 
-    MaterialDesignFrameworkModule,
-    BrowserAnimationsModule
-
+    BrowserAnimationsModule,
+    Bootstrap4FrameworkModule
   ],
   providers: [],
   bootstrap: [AppComponent]

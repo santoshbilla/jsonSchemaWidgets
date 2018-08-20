@@ -7,7 +7,7 @@ import {JsonSchemaService} from '../json-schema.service'
   styleUrls: ['./schema.component.css']
 })
 export class SchemaComponent implements OnInit {
-yourJsonSchema;
+yourJsonSchema : any;
   constructor(private jsonSchema : JsonSchemaService) { }
 
   ngOnInit() {
@@ -15,6 +15,7 @@ yourJsonSchema;
  this.jsonSchema.getSchema()
  .subscribe((data)=>{
     this.yourJsonSchema = data;
+    console.log(this.yourJsonSchema);
    });
 }
 

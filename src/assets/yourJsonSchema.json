@@ -4,7 +4,7 @@
     "properties": {
       
       "name": {
-        
+
         "title": "Name",
         "type": "string"
       },
@@ -21,10 +21,6 @@
         "validationMessage": "Don't be greedy!"
       }
    
-    },
-    "required": [
-      "name",
-      "email",
-      "comment"
-    ]
+    }
+   
   }
