@@ -19,7 +19,7 @@ import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
     FlexLayoutModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-    Bootstrap4FrameworkModule
+   Bootstrap4FrameworkModule 
   ],
   providers: [],
   bootstrap: [AppComponent]

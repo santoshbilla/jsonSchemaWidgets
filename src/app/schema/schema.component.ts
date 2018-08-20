@@ -12,15 +12,20 @@ yourJsonSchema : any;
   ngOnInit() {
     // Define the JSON Schema as an object because [schema] in view takes an object
     this.yourJsonSchema = {
-      "type": "object",
-      "properties":{
-        "comment": {
-           "title": "Comment",
-           "type": "string"
-         }
-      },
-      
+    "schema":
+      {
+        "type": "object",
+        "properties": {
+          "first_name": { "type": "string" },
+          "last_name": { "type": "string" },
+         "clickhere": {"type": "submit", "style":"btn-success", "title":"click here"}
 
+        },
+        "required": [ "last_name" ],
+      },
+    "layout":  [
+        { "type": "flex", "flex-flow": "row wrap", "items": [ "first_name", "last_name" ] },
+      ],
     };
  }
 
