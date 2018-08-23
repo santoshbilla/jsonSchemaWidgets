@@ -1,5 +1,8 @@
 <json-schema-form
- [form]="yourJsonSchema" [widgets]="yourNewWidgets"  (onSubmit)="onSubmit($event)"
-  framework="no-framework">
- 
+ [form]="yourJsonSchema" [widgets]="yourNewWidgets" (onSubmit)="OnSubmit($event)" framework="bootstrap-4">
+
 </json-schema-form>
+<h3>Model</h3>
+<p>
+ {{formData | json}}
+</p>
