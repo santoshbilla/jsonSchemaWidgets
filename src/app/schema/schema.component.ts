@@ -29,40 +29,27 @@ formData;
       this.yourJsonSchema = 
       {
         "schema": {
-          "type": "object",
-          "title": "Comment",
-          "properties": {
-            "name": {
-              "title": "Name",
-              "type": "string"
+      
+        "definitions": {
+          "address": {
+            "type": "object",
+            "properties": {
+              "street_address": { "type": "string" },
+              "city":           { "type": "string" },
+              "state":          { "type": "string" }
             },
-           
-            "comment": {
-              "title": "Comment",
-              "type": "string",
-              "validationMessage": "Don't be greedy!"
-            }
-          },
-          "required": [
-            "name",
-            "comment"
-          ]
+            "required": ["street_address", "city", "state"]
+          }
         },
-
-        "form": [  
-          {"key": "name",
-           "type":"text",
-           "required": true
-          },
-          {
-            "key": "comment",
-            "type": "radhika",
-            "value":"this is value",
-            "required":true,
-            "placeholder": "Make a comment"
-          },
-        ],
-      }
+      
+        "type": "object",
+      
+        "properties": {
+          "billing_address": { "$ref": "#/definitions/address" },
+          "shipping_address": { "$ref": "#/definitions/address" },
+          "sample":{"$ref":"#/definitions/address"}
+        }
+      }}
     }
     OnSubmit(event) {
       console.log("insubmit")
