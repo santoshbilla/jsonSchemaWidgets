@@ -65,18 +65,6 @@ export class InputBoxWidgetComponent implements OnInit {
   ngOnInit() {
     this.options = this.layoutNode.options || {};
     this.jsf.initializeControl(this);
-
-
-    
-console.log("formControl",this.formControl)
- console.log("controlName",this.controlName)
- console.log("controlValue",this.controlValue)
- console.log("options",this.options)
- console.log("BoundControl",this.boundControl)
- console.log("contorlDisabled",this.controlDisabled)
- console.log("layoutIndex",this.layoutIndex)
- console.log("layoutNode",this.layoutNode)
-
   }
 
   updateValue(event) {

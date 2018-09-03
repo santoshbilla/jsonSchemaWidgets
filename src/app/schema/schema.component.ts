@@ -61,7 +61,19 @@ formData;
         },
         {
           "key":"billing_address.city",
-          "type":"q-markdown"
+          "type":"q-markdown",
+          "additional":{
+            "hideIcons": ['Bold']
+          }
+        },
+        {
+          "key":"billing_address.city",
+          "title":"CITY",
+          "type":"q-markdown",
+         "additional":{
+          "hideToolbar":true,
+          "mode":"editor"
+         }
         },
         {
           "key":"billing_address.state",
