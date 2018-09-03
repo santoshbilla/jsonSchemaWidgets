@@ -18,7 +18,7 @@ import { JsonSchemaFormService } from '../../../../../node_modules/angular6-json
 export class MarkdownEditorWidgetComponent implements OnInit {
   Option: any;
   options: {};
-
+ 
   @Input() layoutNode: any;
   @Input() hideToolbar: boolean = false;
   content : string = '';

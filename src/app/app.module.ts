@@ -7,7 +7,6 @@ import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 
-
 import { AppComponent } from './app.component';
 import { SchemaComponent } from './schema/schema.component';
 import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
@@ -31,7 +30,9 @@ import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/ma
     HttpClientModule, 
     BrowserAnimationsModule,
     Bootstrap4FrameworkModule,
-    LMarkdownEditorModule
+    LMarkdownEditorModule,
+   
+  
   ],
   providers: [],
   bootstrap: [AppComponent],
