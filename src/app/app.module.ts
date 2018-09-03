@@ -4,6 +4,7 @@ import { FlexLayoutModule } from '@angular/flex-layout';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 
 
 
@@ -12,13 +13,15 @@ import { SchemaComponent } from './schema/schema.component';
 import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
 import { HelloWorldWidgetComponent } from './widgets/hello-world-widget/hello-world-widget.component';
 import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-widget.component';
+import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
     SchemaComponent,
     
     HelloWorldWidgetComponent,
-    InputBoxWidgetComponent
+    InputBoxWidgetComponent,
+    MarkdownEditorWidgetComponent
   ],
   imports: [
     BrowserModule,
@@ -27,11 +30,12 @@ import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-wi
     ReactiveFormsModule,
     HttpClientModule, 
     BrowserAnimationsModule,
-    Bootstrap4FrameworkModule
+    Bootstrap4FrameworkModule,
+    LMarkdownEditorModule
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[     HelloWorldWidgetComponent, InputBoxWidgetComponent
+  entryComponents:[     HelloWorldWidgetComponent, InputBoxWidgetComponent, MarkdownEditorWidgetComponent
       ]
 })
 export class AppModule { }

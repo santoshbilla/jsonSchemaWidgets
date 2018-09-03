@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import {HelloWorldWidgetComponent} from '../widgets/hello-world-widget/hello-world-widget.component';
 import {InputBoxWidgetComponent} from '../widgets/input-box-widget/input-box-widget.component';
 import { ɵc as WidgetLibraryService } from 'angular6-json-schema-form';
+import { MarkdownEditorWidgetComponent } from '../widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
@@ -18,10 +19,12 @@ formData;
   constructor(  private widgetLibrary: WidgetLibraryService) {
     widgetLibrary.registerWidget('sample', HelloWorldWidgetComponent);
     widgetLibrary.registerWidget('radhika', InputBoxWidgetComponent);
+    widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent)
    }
     yourNewWidgets = {
     
-   sample: HelloWorldWidgetComponent // Add new 'sample' widget
+   'sample': HelloWorldWidgetComponent, // Add new 'sample' widget
+   'q-markdown': MarkdownEditorWidgetComponent 
   }
   ngOnInit() {
     
@@ -43,13 +46,31 @@ formData;
         },
       
         "type": "object",
-      
         "properties": {
           "billing_address": { "$ref": "#/definitions/address" },
-          "shipping_address": { "$ref": "#/definitions/address" },
-          "sample":{"$ref":"#/definitions/address"}
         }
-      }}
+      },
+      "layout":[
+        {
+          "key":"billing_address",
+      "type":"div",
+      "items":[
+        {
+          "key":"billing_address.street_address",
+          "type":"sample"
+        },
+        {
+          "key":"billing_address.city",
+          "type":"q-markdown"
+        },
+        {
+          "key":"billing_address.state",
+          "type":"radhika"
+        }]
+      }
+      ]
+    }
+
     }
     OnSubmit(event) {
       console.log("insubmit")
