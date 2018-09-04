@@ -13,6 +13,7 @@ import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
 import { HelloWorldWidgetComponent } from './widgets/hello-world-widget/hello-world-widget.component';
 import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-widget.component';
 import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
+
 @NgModule({
   declarations: [
     AppComponent,
