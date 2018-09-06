@@ -19,12 +19,12 @@ formData;
   constructor(  private widgetLibrary: WidgetLibraryService) {
     widgetLibrary.registerWidget('sample', HelloWorldWidgetComponent);
     widgetLibrary.registerWidget('radhika', InputBoxWidgetComponent);
-    widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent)
+    widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent);
    }
     yourNewWidgets = {
     
    'sample': HelloWorldWidgetComponent, // Add new 'sample' widget
-   'q-markdown': MarkdownEditorWidgetComponent 
+   'q-markdown': MarkdownEditorWidgetComponent,
   }
   ngOnInit() {
     
@@ -78,7 +78,13 @@ formData;
         {
           "key":"billing_address.state",
           "type":"radhika"
-        }]
+        },
+        {
+          "key":"billing_address.state",
+          "title":"STATE:Q-MDE",
+          "type":"text"
+        }
+      ]
       }
       ]
     }
