@@ -59,7 +59,13 @@ formData: any;
               "items": [
                 {
                   "title": "Bug",
-                  "type": "q-uiSwitch"
+                  "type": "q-uiSwitch",
+                  "additional":{
+                    "size": "large",
+                    "checkedLabel": "on",
+                    "uncheckedLabel": "off"
+              
+                  }
                 }
               ]
             }

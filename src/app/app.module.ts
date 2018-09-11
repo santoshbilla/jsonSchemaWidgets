@@ -32,7 +32,15 @@ import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widg
     BrowserAnimationsModule,
     Bootstrap4FrameworkModule,
     LMarkdownEditorModule,
-    UiSwitchModule
+    UiSwitchModule.forRoot({
+      size: 'small',
+      color: 'rgb(0, 189, 99)',
+      switchColor: '#80FFA2',
+      defaultBgColor: '#00ACFF',
+      defaultBoColor : '#476EFF',
+      checkedLabel: 'on',
+      uncheckedLabel: 'off'
+    })
    
   ],
   providers: [],

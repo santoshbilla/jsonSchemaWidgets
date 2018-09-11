@@ -14,13 +14,24 @@ export class UiSwitchWidgetComponent implements OnInit {
   formControl: AbstractControl;
  change: Event;
   enable: any= '';
-  options: any;
 count: number = 0;
   constructor(private jsf : JsonSchemaFormService) { }
 
   ngOnInit() {
-
-    console.log("layoutnode properties", this.layoutNode)
+   
+    console.log('this.layoutnode',this.layoutNode)
+    console.log('this.layoutnode.options',this.layoutNode.options)
+    console.log('additional', this.layoutNode.options.additional)
+    if (this.layoutNode && this.layoutNode.options && this.layoutNode.options.additional) {
+      console.log('in if this.layoutnode',this.layoutNode)
+      this.layoutNode.options = { ...this.layoutNode.options, ...this.layoutNode.options.additional};     
+  }
+  
+  if (this.layoutNode) {
+    
+    this.layoutNode.options = this.layoutNode.options.additional || {};
+    console.log('else if block this.options', this.layoutNode.options);
+}
     this.jsf.initializeControl(this);
   }
 
