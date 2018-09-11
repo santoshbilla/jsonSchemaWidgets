@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
+import { UiSwitchModule } from "ngx-ui-switch";
 
 import { AppComponent } from './app.component';
 import { SchemaComponent } from './schema/schema.component';
@@ -12,6 +13,7 @@ import { Bootstrap4FrameworkModule } from 'angular6-json-schema-form';
 import { HelloWorldWidgetComponent } from './widgets/hello-world-widget/hello-world-widget.component';
 import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-widget.component';
 import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
+import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -19,6 +21,7 @@ import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/ma
     HelloWorldWidgetComponent,
     InputBoxWidgetComponent,
     MarkdownEditorWidgetComponent,
+    UiSwitchWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,11 +32,17 @@ import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/ma
     BrowserAnimationsModule,
     Bootstrap4FrameworkModule,
     LMarkdownEditorModule,
+    UiSwitchModule
+   
   ],
   providers: [],
   bootstrap: [AppComponent],
-  entryComponents:[     HelloWorldWidgetComponent, InputBoxWidgetComponent, MarkdownEditorWidgetComponent
-      ]
+  entryComponents:[     
+    HelloWorldWidgetComponent, 
+    InputBoxWidgetComponent, 
+    MarkdownEditorWidgetComponent, 
+    UiSwitchWidgetComponent
+  ]
      
 })
 export class AppModule { }

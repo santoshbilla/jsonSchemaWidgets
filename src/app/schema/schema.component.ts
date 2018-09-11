@@ -1,9 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 
 import {HelloWorldWidgetComponent} from '../widgets/hello-world-widget/hello-world-widget.component';
 import {InputBoxWidgetComponent} from '../widgets/input-box-widget/input-box-widget.component';
 import { ɵc as WidgetLibraryService } from 'angular6-json-schema-form';
 import { MarkdownEditorWidgetComponent } from '../widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
+import { UiSwitchWidgetComponent } from "../widgets/ui-switch-widget/ui-switch-widget.component";
+
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
@@ -11,91 +13,70 @@ import { MarkdownEditorWidgetComponent } from '../widgets/markdownEditorWidget/m
 })
 
 export class SchemaComponent implements OnInit {
-  
 yourJsonSchema : any;
 yourJsonLayout: any;
-
-formData;
+data: any;
+formData: any;
   constructor(  private widgetLibrary: WidgetLibraryService) {
     widgetLibrary.registerWidget('sample', HelloWorldWidgetComponent);
     widgetLibrary.registerWidget('radhika', InputBoxWidgetComponent);
     widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent);
+    widgetLibrary.registerWidget('q-uiSwitch', UiSwitchWidgetComponent)
    }
     yourNewWidgets = {
     
    'sample': HelloWorldWidgetComponent, // Add new 'sample' widget
    'q-markdown': MarkdownEditorWidgetComponent,
+   'q-uiSwitch' : UiSwitchWidgetComponent
   }
   ngOnInit() {
-    
+
     // Define the JSON Schema as an object because [schema] in view takes an object
       this.yourJsonSchema = 
       {
-        "schema": {
-      
-        "definitions": {
-          "address": {
-            "type": "object",
-            "properties": {
-              "street_address": { "type": "string" },
-              "city":           { "type": "string" },
-              "state":          { "type": "string" }
-            },
-            "required": ["street_address", "city", "state"]
+        "schema": 
+        {
+          "type": "object",
+          "title": "Object",
+          "properties": {
+            "information": {
+              "type": "array",
+              "title": "Information",
+              "validation": "list",
+              "uniqueItems": true,
+              "items": {
+                "type": "boolean",
+                "title": "Bug"
+              }
+            }
           }
         },
-      
-        "type": "object",
-        "properties": {
-          "billing_address": { "$ref": "#/definitions/address" },
-        }
-      },
-      "layout":[
-        {
-          "key":"billing_address",
-      "type":"div",
-      "items":[
-        {
-          "key":"billing_address.street_address",
-          "type":"sample"
-        },
-        {
-          "key":"billing_address.city",
-          "type":"q-markdown",
-          "additional":{
-            "hideIcons": ['Bold']
+        "layout":
+          [
+            {
+              "key": "information",
+              "type": "array",
+              "items": [
+                {
+                  "title": "Bug",
+                  "type": "q-uiSwitch"
+                }
+              ]
+            }
+           ]
+        
           }
-        },
-        {
-          "key":"billing_address.city",
-          "title":"CITY",
-          "type":"q-markdown",
-         "additional":{
-          "hideToolbar":true,
-          "mode":"editor"
-         }
-        },
-        {
-          "key":"billing_address.state",
-          "type":"radhika"
-        },
-        {
-          "key":"billing_address.state",
-          "title":"STATE:Q-MDE",
-          "type":"text"
-        }
-      ]
-      }
-      ]
+        
     }
-
-    }
-    OnSubmit(event) {
-      console.log("insubmit")
+   
+    onSubmit(event) {
+      console.log("insubmit", event)
       this.formData = event;
-      console.log(this.formData)
+     // console.log(this.formData)
     }
-
+    onChanges(event){
+      this.data = event;
+    }
 }
 
 
