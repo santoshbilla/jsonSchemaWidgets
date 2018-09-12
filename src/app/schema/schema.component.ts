@@ -61,10 +61,13 @@ formData: any;
                   "title": "Bug",
                   "type": "q-uiSwitch",
                   "additional":{
-                    "size": "large",
-                    "checkedLabel": "on",
-                    "uncheckedLabel": "off"
-              
+                    'size': 'large',
+                
+                    color: 'rgb(0, 189, 99)',
+                    switchColor: '#80FFA2',
+                   
+                    checkedLabel: 'on',
+                    uncheckedLabel: 'off'
                   }
                 }
               ]
