@@ -7,14 +7,13 @@
   [style.display]="options?.notitle ? 'none' : ''"
   [innerHTML]="options?.title"></label>
 
-  <ui-switch  (change)="onChange($event)" 
-    size='{{additional.size}}'  
+  <ui-switch  size='{{additional.size}}'  
     color= '{{additional.color}}'
     switchColor= '{{additional.switchColor}}'
     defaultBgColor= '{{additional.defaultBgColor}}'
     defaultBoColor = '{{additional.defaultBoColor}}' 
     uncheckedLabel='{{additional.uncheckedLabel}}' 
     checkedLabel='{{additional.checkedLabel}}'
-    [(ngModel)]="enable">
+    name="qSwitchWidgetName" [(ngModel)]="qSwitchWidgetModel" (ngModelChange)="updateValue()">
   </ui-switch>
 </div>

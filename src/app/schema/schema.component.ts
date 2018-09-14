@@ -36,43 +36,34 @@ formData: any;
       {
         "schema": 
         {
-          "type": "object",
-          "title": "Object",
-          "properties": {
-            "information": {
-              "type": "array",
-              "title": "Information",
-              "validation": "list",
-              "uniqueItems": true,
-              "items": {
+            "type": "object",
+            "properties": {
+              "string": {
+                "type": "string",
+                "title": "String"
+              },
+              "boolean": {
                 "type": "boolean",
-                "title": "Bug"
+                "title": "Boolean"
               }
-            }
-          }
+            },
         },
         "layout":
-          [
-            {
-              "key": "information",
-              "type": "array",
-              "items": [
-                {
-                  "title": "Bug",
-                  "type": "q-uiSwitch",
-                  "additional":{
-                    'size': 'large',
-                
-                    color: 'rgb(0, 189, 99)',
-                    switchColor: '#80FFA2',
-                   
-                    checkedLabel: 'on',
-                    uncheckedLabel: 'off'
-                  }
+          
+            [
+              {
+                "key": "string",
+                "type": "q-uiSwitch",
+                "additional":{
+                  "trueValue":"hello"
                 }
-              ]
-            }
-           ]
+              },
+              {
+                "key": "boolean",
+                "type": "q-uiSwitch"  
+              }
+            ]
+           
         
           }
         
