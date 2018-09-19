@@ -5,7 +5,7 @@ import {InputBoxWidgetComponent} from '../widgets/input-box-widget/input-box-wid
 import { ɵc as WidgetLibraryService } from 'angular6-json-schema-form';
 import { MarkdownEditorWidgetComponent } from '../widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 import { UiSwitchWidgetComponent } from "../widgets/ui-switch-widget/ui-switch-widget.component";
-
+import { QswitchWidgetComponent } from "../widgets/q-switch-widget/q-switch-widget.component";
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
@@ -21,13 +21,15 @@ formData: any;
     widgetLibrary.registerWidget('sample', HelloWorldWidgetComponent);
     widgetLibrary.registerWidget('radhika', InputBoxWidgetComponent);
     widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent);
-    widgetLibrary.registerWidget('q-uiSwitch', UiSwitchWidgetComponent)
+    widgetLibrary.registerWidget('q-uiSwitch', UiSwitchWidgetComponent);
+    widgetLibrary.registerWidget('q-switch', QswitchWidgetComponent)
    }
     yourNewWidgets = {
     
    'sample': HelloWorldWidgetComponent, // Add new 'sample' widget
    'q-markdown': MarkdownEditorWidgetComponent,
-   'q-uiSwitch' : UiSwitchWidgetComponent
+   'q-uiSwitch' : UiSwitchWidgetComponent,
+   'q-switch' : QswitchWidgetComponent
   }
   ngOnInit() {
 
@@ -60,7 +62,7 @@ formData: any;
               },
               {
                 "key": "boolean",
-                "type": "q-uiSwitch"  
+                "type": "q-switch"  
               }
             ]
            

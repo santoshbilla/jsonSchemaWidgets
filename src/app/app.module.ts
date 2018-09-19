@@ -14,6 +14,7 @@ import { HelloWorldWidgetComponent } from './widgets/hello-world-widget/hello-wo
 import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-widget.component';
 import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widget.component';
+import { QswitchWidgetComponent } from './widgets/q-switch-widget/q-switch-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widg
     InputBoxWidgetComponent,
     MarkdownEditorWidgetComponent,
     UiSwitchWidgetComponent,
+    QswitchWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -43,7 +45,8 @@ import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widg
     HelloWorldWidgetComponent, 
     InputBoxWidgetComponent, 
     MarkdownEditorWidgetComponent, 
-    UiSwitchWidgetComponent
+    UiSwitchWidgetComponent,
+    QswitchWidgetComponent
   ]
      
 })
