@@ -25,37 +25,34 @@ export class QswitchWidgetComponent implements OnInit {
   };
   constructor(private jsf : JsonSchemaFormService) { }
 
-  /**
-   * Initialize widget defaults
-   */
   ngOnInit() {
-
-    this.options = this.layoutNode.options;
-    this.additional = { ...this.additional, ...this.options.additional }
-    if(this.layoutNode.options.default && this.layoutNode.options.default === true )
-    {
-      this.options.checked = this.layoutNode.options.default;
-    }
-    if(this.options.checked && this.options.checked === true)
-    {
-      this.qSwitchWidgetModel = this.options.checked;
-    }
-  
+    this.setDefault();
+    this.additional = { ...this.additional, ...this.options.additional, ...this.setDefault().trueValue }
     this.jsf.initializeControl(this);
   }
 
-  /**
-   * [updateValue description]
-  */
   updateValue(){
     let result = this.getResult();
     this.jsf.updateValue(this, result);
   }
 
-  /**
-   * [get true/false value of switch]
-   * @return [description]
-  */
+  setDefault(){
+    this.options = this.layoutNode.options;
+    // If default value is given set the true value as default value 
+    //Only for true because if default is given as false checked is already false
+    if(this.layoutNode.options.default){
+      this.options.checked = true;
+      this.additional.trueValue = this.layoutNode.options.default;
+    }
+    // Set layout as checked = true
+    if(this.options.checked)
+    {
+      this.qSwitchWidgetModel = this.options.checked;
+    }
+    return {checked : this.options.checked, trueValue: this.additional.trueValue};
+  }
+  
+  
   getResult(): any {
     let result: any = this.qSwitchWidgetModel;
     if(this.qSwitchWidgetModel){
@@ -70,18 +67,16 @@ export class QswitchWidgetComponent implements OnInit {
     return result;
   }
 
-  /**
-   * [return the proper value type according to layoutNode.dataType]
-   * @param  value [additional.trueValue / additional.falseValue]
-   * @return       [typecasted value]
-   */
+
+
   typecastValue(value, model) {
     console.log(value, model);
     if(this.layoutNode.dataType === 'string') {
       value =  value.toString();
     }
-
+  
     if(this.layoutNode.dataType === 'number' || this.layoutNode.dataType === 'integer') {
+
         value = parseInt(value);
         if(isNaN(value)){ //value cannot be typecased to a number
 

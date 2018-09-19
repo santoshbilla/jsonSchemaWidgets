@@ -34,6 +34,17 @@ formData: any;
   ngOnInit() {
 
     // Define the JSON Schema as an object because [schema] in view takes an object
+    // check the condition for default checkbox and widget for default property
+    
+    /*layout: [ {
+        "key": "boolean",
+        "type": "q-switch"  
+      }
+     {
+        "key": "boolean",
+        "type": "checkbox"  
+      }]
+    }*/
       this.yourJsonSchema = 
       {
         "schema": 
@@ -46,7 +57,8 @@ formData: any;
               },
               "boolean": {
                 "type": "boolean",
-                "title": "Boolean"
+                "title": "Boolean",
+                "default": true
               }
             },
         },
@@ -55,7 +67,7 @@ formData: any;
             [
               {
                 "key": "string",
-                "type": "q-uiSwitch",
+                "type": "q-switch",
                 "additional":{
                   "trueValue":"hello"
                 }
