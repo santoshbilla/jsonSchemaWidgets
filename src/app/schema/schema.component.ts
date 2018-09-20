@@ -1,5 +1,5 @@
-import { Component, OnInit} from '@angular/core';
-
+import { Component, OnInit, Input} from '@angular/core';
+import { AbstractControl } from '@angular/forms';
 import {HelloWorldWidgetComponent} from '../widgets/hello-world-widget/hello-world-widget.component';
 import {InputBoxWidgetComponent} from '../widgets/input-box-widget/input-box-widget.component';
 import { ɵc as WidgetLibraryService } from 'angular6-json-schema-form';
@@ -15,6 +15,8 @@ import { QswitchWidgetComponent } from "../widgets/q-switch-widget/q-switch-widg
 export class SchemaComponent implements OnInit {
 yourJsonSchema : any;
 yourJsonLayout: any;
+@Input() layoutNode: any;
+formControl: AbstractControl;
 data: any;
 formData: any;
   constructor(  private widgetLibrary: WidgetLibraryService) {
@@ -32,7 +34,7 @@ formData: any;
    'q-switch' : QswitchWidgetComponent
   }
   ngOnInit() {
-
+   
     // Define the JSON Schema as an object because [schema] in view takes an object
     // check the condition for default checkbox and widget for default property
     
@@ -51,36 +53,22 @@ formData: any;
         {
             "type": "object",
             "properties": {
-              "string": {
-                "type": "string",
-                "title": "String"
-              },
               "boolean": {
                 "type": "boolean",
-                "title": "Boolean",
-                "default": true
+                "title": "Boolean"
               }
             },
         },
         "layout":
-          
             [
               {
-                "key": "string",
-                "type": "q-switch",
-                "additional":{
-                  "trueValue":"hello"
-                }
-              },
-              {
                 "key": "boolean",
-                "type": "q-switch"  
+                "type": "q-switch"
               }
-            ]
-           
-        
-          }
-        
+            ]      
+      }
+   
+     
     }
    
     onSubmit(event) {
@@ -88,7 +76,8 @@ formData: any;
       this.formData = event;
      // console.log(this.formData)
     }
-    onChanges(event){
+    onChangesFunction(event){
+      console.log("onchanges", event)
       this.data = event;
     }
 }

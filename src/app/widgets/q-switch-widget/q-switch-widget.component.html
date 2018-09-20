@@ -1,18 +1,25 @@
-<div
-  [class]="options?.htmlClass || ''">
 
-  <label *ngIf="options?.title"
-  [attr.for]="'control' + layoutNode?._id"
-  [class]="options?.labelHtmlClass || ''"
-  [style.display]="options?.notitle ? 'none' : ''"
-  [innerHTML]="options?.title">
-  </label>
     <div class="switch">
       <label class="form-check-label">
-        <input type="checkbox" class="form-check-input" [checked]="options?.checked" [disabled]="options?.disabled" name="qSwitch" [(ngModel)]="qSwitchWidgetModel" (ngModelChange)="updateValue()">
+          <input *ngIf="boundControl"
+          [formControl]="control"
+          [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+          [class]="form-check-input"
+          [name]="controlName"
+          [readonly]="options?.readonly ? 'readonly' : null"
+          type="checkbox" >
+        <input *ngIf="!boundControl"
+          [attr.aria-describedby]="'control' + layoutNode?._id + 'Status'"
+          [checked]="isChecked ? 'checked' : null"
+          [class]="form-check-input"
+          [disabled]="controlDisabled"
+          [name]="controlName"
+          [readonly]="options?.readonly ? 'readonly' : null"
+         
+          [value]="qSwitchWidgetModel"
+          type="checkbox"
+          (click)="updateValue()">
         <span class="slider round"> </span>
     </label>
 
   </div>
-
-</div>

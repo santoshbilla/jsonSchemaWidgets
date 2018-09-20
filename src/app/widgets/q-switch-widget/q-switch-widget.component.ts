@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JsonSchemaFormService } from "angular6-json-schema-form";
-import { AbstractControl } from '@angular/forms';
+import { AbstractControl, FormControl } from '@angular/forms';
 
 interface Additional
 {
@@ -14,8 +14,11 @@ interface Additional
 })
 export class QswitchWidgetComponent implements OnInit {
   @Input() layoutNode: any;
-  qSwitchWidgetModel: any = false;
   formControl: AbstractControl;
+  qSwitchWidgetModel: any = false;
+  control = new FormControl(this.qSwitchWidgetModel);
+  boundControl = false;
+  controlDisabled = false;
   options : any;
   disabled : boolean = false;
   checked : boolean = false;
@@ -23,33 +26,48 @@ export class QswitchWidgetComponent implements OnInit {
     trueValue: true,
     falseValue: false
   };
-  constructor(private jsf : JsonSchemaFormService) { }
-
-  ngOnInit() {
-    this.setDefault();
-    this.additional = { ...this.additional, ...this.options.additional, ...this.setDefault().trueValue }
-    this.jsf.initializeControl(this);
+  
+  constructor(private jsf : JsonSchemaFormService) { 
+  
   }
 
-  updateValue(){
+  ngOnInit() {
+    //this.control.setValue(this.qSwitchWidgetModel)
+    console.log("this.formcontrol", this.control)
+    console.log(this.control.value)
+    this.options = {...this.layoutNode.options};
+    this.setDefault(); 
+    this.additional = { ...this.additional, ...this.options.additional}
+    this.jsf.initializeControl(this);
+  }
+ updateValue(){
+    console.log(this.qSwitchWidgetModel)
+    //event.preventDefault();
+    console.log(this.control.value)
+    this.control.setValue('true')
+    console.log(this.control.value)
+    console.log("in updateValue")
     let result = this.getResult();
     this.jsf.updateValue(this, result);
   }
 
   setDefault(){
-    this.options = this.layoutNode.options;
-    // If default value is given set the true value as default value 
-    //Only for true because if default is given as false checked is already false
-    if(this.layoutNode.options.default){
-      this.options.checked = true;
-      this.additional.trueValue = this.layoutNode.options.default;
+    
+    if(this.layoutNode.dataType === 'boolean' ){
+      if(this.layoutNode.options.default){
+        // if(this.layoutNode.options.checked){
+        //   console.log("checked true")
+        //   this.qSwitchWidgetModel= true;
+        // }else{
+        //   console.log("checked false")
+        //   this.layoutNode.options.checked = true;
+        //   this.setDefault();
+        // }
+        this.qSwitchWidgetModel= true;
+      }else{      
+        this.qSwitchWidgetModel = false;
+       }
     }
-    // Set layout as checked = true
-    if(this.options.checked)
-    {
-      this.qSwitchWidgetModel = this.options.checked;
-    }
-    return {checked : this.options.checked, trueValue: this.additional.trueValue};
   }
   
   
