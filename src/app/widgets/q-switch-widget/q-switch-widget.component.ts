@@ -46,6 +46,7 @@ export class QswitchWidgetComponent implements OnInit {
 
   setDefault(){
     if(this.layoutNode.dataType === 'boolean' ){
+
       if(this.options.default){
         if(this.layoutNode.options.additional){
           this.getModelValue();
@@ -53,6 +54,8 @@ export class QswitchWidgetComponent implements OnInit {
           this.qSwitchWidgetModel = this.options.default;
         }
       }else{
+        console.log("default false or undefined",this.options.default)
+       this.getModelValue();
       this.qSwitchWidgetModel = false;
       }
     }     
@@ -60,24 +63,26 @@ export class QswitchWidgetComponent implements OnInit {
 
   getModelValue(){
     console.log("in getModelValue")
-    if(this.layoutNode.options.additional === null){
-      console.log("additional is null")
-    }else{
-      
-      if(this.layoutNode.options.additional.trueValue){
-       this.qSwitchWidgetModel = true;
-      }else{
-        alert("trueValue not true");
+    console.log( typeof this.layoutNode.options.additional)
+    switch(this.layoutNode.options.additional){
+      case {}:{
+        console.log("null");
+        break;
       }
-      if(this.layoutNode.options.additional.falseValue){
-        this.qSwitchWidgetModel = false;
-       }else{
-        alert("falseValue not false");
-       }
+      case undefined:{
+        console.log("undefined");
+        break;
+      }
+      default:{
+        console.log("default");
+        break;
+      }
+    }
+   
     
     }
     
-  }
+  
   
   
   getResult(): any {
