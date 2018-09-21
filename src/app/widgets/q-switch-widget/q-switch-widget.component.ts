@@ -63,14 +63,16 @@ export class QswitchWidgetComponent implements OnInit {
 
   getModelValue(){
     console.log("in getModelValue")
+    console.log(this.layoutNode.options.additional)
     console.log( typeof this.layoutNode.options.additional)
-    switch(this.layoutNode.options.additional){
-      case {}:{
-        console.log("null");
+    console.log("isEmpty",this.isEmpty(this.layoutNode.options.additional))
+    switch(this.isEmpty(this.layoutNode.options.additional)){
+      case true:{
+        console.log("Empty objectnull");
         break;
       }
-      case undefined:{
-        console.log("undefined");
+      case false:{
+        console.log("not empty");
         break;
       }
       default:{
@@ -83,7 +85,9 @@ export class QswitchWidgetComponent implements OnInit {
     }
     
   
-  
+  isEmpty(obj) {
+      return Object.keys(obj).length === 0;
+  }
   
   getResult(): any {
     let result: any = this.qSwitchWidgetModel;

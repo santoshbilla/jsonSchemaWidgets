@@ -67,6 +67,7 @@ formData: any;
                 "key": "boolean",
                 "type": "q-switch",
                 "additional":{
+                 "trueValue": true
                 }
                
                 
