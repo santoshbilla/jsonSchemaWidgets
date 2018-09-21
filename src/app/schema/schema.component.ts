@@ -56,7 +56,7 @@ formData: any;
               "boolean": {
                 "type": "boolean",
                 "title": "Boolean",
-                "default":false
+                "default":true
                
               }
             },

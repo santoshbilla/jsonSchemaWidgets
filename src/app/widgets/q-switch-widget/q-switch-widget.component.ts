@@ -14,14 +14,11 @@ interface Additional
 })
 export class QswitchWidgetComponent implements OnInit {
   @Input() layoutNode: any;
-//  formControl: AbstractControl;
+  formControl: AbstractControl;
   qSwitchWidgetModel: any= false;
-  control = new FormControl();
-  changecount: number = 0;
-  controlDisabled = false;
+ // control = new FormControl(); 
   options : any;
-  disabled : boolean = false;
-  //checked : boolean = false;
+  checked: any;
   additional: Additional = {
     trueValue: true,
     falseValue: false
@@ -34,8 +31,8 @@ export class QswitchWidgetComponent implements OnInit {
   ngOnInit() {
     //this.control.setValue(this.qSwitchWidgetModel)
 
-    console.log("this.formcontrol", this.control)
-    console.log(this.control.value)
+   // console.log("this.formcontrol", this.control)
+    //console.log(this.control.value)
     this.options = {...this.layoutNode.options};
    if(this.options.default){
      this.options.checked = this.options.default;
@@ -46,7 +43,8 @@ export class QswitchWidgetComponent implements OnInit {
   }
 
  updateValue(event){
-   this.qSwitchWidgetModel = event.target.checked;
+   console.log("event",event)
+   this.qSwitchWidgetModel = event;
   console.log("qSwitchwidgetmodel", this.qSwitchWidgetModel)
   let result = this.getResult();
     this.jsf.updateValue(this, result);

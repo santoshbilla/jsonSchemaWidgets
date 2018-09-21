@@ -20,13 +20,11 @@
   <label class="form-check-label">
     
     <input
-    [formControl]="control"
-     
       [class]="form-check-input"
       [checked]="options?.checked"
-     [value]="qSwitchWidgetModel"
+     [(ngModel)]="qSwitchWidgetModel"
       type="checkbox"
-      (change)="updateValue($event)">
+      (ngModelChange)="updateValue($event)">
     <span class="slider round"> </span>
 </label>
 </div> 
