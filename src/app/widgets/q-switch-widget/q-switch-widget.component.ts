@@ -33,7 +33,7 @@ export class QswitchWidgetComponent implements OnInit {
 
   ngOnInit() {
     //this.control.setValue(this.qSwitchWidgetModel)
-    
+
     console.log("this.formcontrol", this.control)
     console.log(this.control.value)
     this.options = {...this.layoutNode.options};
