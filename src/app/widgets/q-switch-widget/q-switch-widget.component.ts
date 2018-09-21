@@ -14,14 +14,14 @@ interface Additional
 })
 export class QswitchWidgetComponent implements OnInit {
   @Input() layoutNode: any;
-  formControl: AbstractControl;
-  qSwitchWidgetModel: any = false;
-  control = new FormControl(this.qSwitchWidgetModel);
-  boundControl = false;
+//  formControl: AbstractControl;
+  qSwitchWidgetModel: any= false;
+  control = new FormControl();
+  changecount: number = 0;
   controlDisabled = false;
   options : any;
   disabled : boolean = false;
-  checked : boolean = false;
+  //checked : boolean = false;
   additional: Additional = {
     trueValue: true,
     falseValue: false
@@ -33,23 +33,35 @@ export class QswitchWidgetComponent implements OnInit {
 
   ngOnInit() {
     //this.control.setValue(this.qSwitchWidgetModel)
+    
     console.log("this.formcontrol", this.control)
     console.log(this.control.value)
     this.options = {...this.layoutNode.options};
+   if(this.options.default){
+     this.options.checked = this.options.default;
+   }
     this.setDefault(); 
     this.additional = { ...this.additional, ...this.options.additional}
     this.jsf.initializeControl(this);
   }
- updateValue(){
-    console.log(this.qSwitchWidgetModel)
-    //event.preventDefault();
-    console.log(this.control.value)
-    this.control.setValue('true')
-    console.log(this.control.value)
-    console.log("in updateValue")
-    let result = this.getResult();
+
+ updateValue(event){
+   this.qSwitchWidgetModel = event.target.checked;
+  console.log("qSwitchwidgetmodel", this.qSwitchWidgetModel)
+  let result = this.getResult();
     this.jsf.updateValue(this, result);
-  }
+   
+    }
+//  updateValue(){
+//     console.log(this.qSwitchWidgetModel)
+//     //event.preventDefault();
+//     console.log(this.control.value)
+//   //  this.control.setValue('true')
+//   //  console.log(this.control.value)
+//     console.log("in updateValue")
+//     let result = this.getResult();
+//     this.jsf.updateValue(this, result);
+//   }
 
   setDefault(){
     

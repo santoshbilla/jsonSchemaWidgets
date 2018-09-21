@@ -55,7 +55,9 @@ formData: any;
             "properties": {
               "boolean": {
                 "type": "boolean",
-                "title": "Boolean"
+                "title": "Boolean",
+                "default":false
+               
               }
             },
         },
