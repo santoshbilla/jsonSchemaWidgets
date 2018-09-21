@@ -16,7 +16,6 @@ export class QswitchWidgetComponent implements OnInit {
   @Input() layoutNode: any;
   formControl: AbstractControl;
   qSwitchWidgetModel: any= false;
- // control = new FormControl(); 
   options : any;
   checked: any;
   additional: Additional = {
@@ -29,14 +28,8 @@ export class QswitchWidgetComponent implements OnInit {
   }
 
   ngOnInit() {
-    //this.control.setValue(this.qSwitchWidgetModel)
-
-   // console.log("this.formcontrol", this.control)
-    //console.log(this.control.value)
+   
     this.options = {...this.layoutNode.options};
-   if(this.options.default){
-     this.options.checked = this.options.default;
-   }
     this.setDefault(); 
     this.additional = { ...this.additional, ...this.options.additional}
     this.jsf.initializeControl(this);
@@ -50,34 +43,40 @@ export class QswitchWidgetComponent implements OnInit {
     this.jsf.updateValue(this, result);
    
     }
-//  updateValue(){
-//     console.log(this.qSwitchWidgetModel)
-//     //event.preventDefault();
-//     console.log(this.control.value)
-//   //  this.control.setValue('true')
-//   //  console.log(this.control.value)
-//     console.log("in updateValue")
-//     let result = this.getResult();
-//     this.jsf.updateValue(this, result);
-//   }
 
   setDefault(){
-    
     if(this.layoutNode.dataType === 'boolean' ){
-      if(this.layoutNode.options.default){
-        // if(this.layoutNode.options.checked){
-        //   console.log("checked true")
-        //   this.qSwitchWidgetModel= true;
-        // }else{
-        //   console.log("checked false")
-        //   this.layoutNode.options.checked = true;
-        //   this.setDefault();
-        // }
-        this.qSwitchWidgetModel= true;
-      }else{      
-        this.qSwitchWidgetModel = false;
-       }
+      if(this.options.default){
+        if(this.layoutNode.options.additional){
+          this.getModelValue();
+        }else{
+          this.qSwitchWidgetModel = this.options.default;
+        }
+      }else{
+      this.qSwitchWidgetModel = false;
+      }
+    }     
     }
+
+  getModelValue(){
+    console.log("in getModelValue")
+    if(this.layoutNode.options.additional === null){
+      console.log("additional is null")
+    }else{
+      
+      if(this.layoutNode.options.additional.trueValue){
+       this.qSwitchWidgetModel = true;
+      }else{
+        alert("trueValue not true");
+      }
+      if(this.layoutNode.options.additional.falseValue){
+        this.qSwitchWidgetModel = false;
+       }else{
+        alert("falseValue not false");
+       }
+    
+    }
+    
   }
   
   

@@ -55,8 +55,8 @@ formData: any;
             "properties": {
               "boolean": {
                 "type": "boolean",
-                "title": "Boolean",
-                "default":true
+                "title": "boolean",
+                "default": true
                
               }
             },
@@ -65,7 +65,11 @@ formData: any;
             [
               {
                 "key": "boolean",
-                "type": "q-switch"
+                "type": "q-switch",
+                "additional":{
+              
+                 "falseValue": false
+                }
               }
             ]      
       }
