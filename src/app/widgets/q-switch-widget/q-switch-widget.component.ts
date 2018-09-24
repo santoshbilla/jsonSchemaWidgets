@@ -59,16 +59,16 @@ export class QswitchWidgetComponent implements OnInit {
   
 
   getModelValue(){
-    if(this.jsf.getFormControlValue(this) === this.additional.trueValue){
+    if(this.jsf.getFormControlValue(this)){
       this.qSwitchWidgetModel = true
     }
 
-    if(this.options.default === this.additional.trueValue){
-      this.qSwitchWidgetModel = true;
+    if(this.options.default){
+      this.qSwitchWidgetModel = this.options.default;
     }
   return this.qSwitchWidgetModel;
   }
-  
+
   getResult(): any {
     let result: any = this.qSwitchWidgetModel;
     if(this.qSwitchWidgetModel){

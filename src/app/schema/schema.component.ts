@@ -56,13 +56,13 @@ formData: any;
               "boolean": {
                 "type": "boolean",
                 "title": "boolean",
-                "default": false
+                "default": true
               
               },
               "boolean1": {
                 "type": "boolean",
-                "title": "boolean",
-             
+                "title": "boolean1",
+           
               
               }
             },
@@ -86,7 +86,6 @@ formData: any;
               }
             ],
             "data":{
-              "boolean": false,
               "boolean1": true
             }      
       }
