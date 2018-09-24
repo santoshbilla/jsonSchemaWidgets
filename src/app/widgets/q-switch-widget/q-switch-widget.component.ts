@@ -69,7 +69,6 @@ export class QswitchWidgetComponent implements OnInit {
             this.qSwitchWidgetModel = true;
           }
         }
-
        if(this.options.default === 1){
          this.qSwitchWidgetModel = true;
        }
