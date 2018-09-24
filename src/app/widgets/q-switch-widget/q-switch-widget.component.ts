@@ -74,11 +74,9 @@ export class QswitchWidgetComponent implements OnInit {
         // If schema contains a DEFAULT value 
         if(this.options.default){
         // Check layout additional trueValue and falseValue
-          if(this.layoutNode.options.additional){
           // If default value === trueValue set qSwitchWidgetModel to TRUE
           // If default value === falseValue set qSwitchWidgetModel to FALSE 
             this.qSwitchWidgetModel = this.getModelValue(this.options.default)
-          }
         }
       }
     }
@@ -90,17 +88,18 @@ export class QswitchWidgetComponent implements OnInit {
     //Check layout additional trueValue and falseValue
     if(this.layoutNode.options.additional){
       console.log("additional properties are defined")
-   
+    //additional is given but is null
+        this.qSwitchWidgetModel = this.typecastValue(value, this.qSwitchWidgetModel);;
     //If data value === trueValue set qSwitchWidgetModel to TRUE
     if(value === this.additional.trueValue){
+      console.log("in truevalue==value")
       this.qSwitchWidgetModel = true;
     }
     //If data value === falseValue set qSwitchWidgetModel to FALSE
     if(value === this.additional.falseValue){
+      console.log("in truevalue==value")
       this.qSwitchWidgetModel = false;
     } 
-  }else{
-    this.qSwitchWidgetModel = value;
   }
   return this.qSwitchWidgetModel;
   }
@@ -128,7 +127,7 @@ export class QswitchWidgetComponent implements OnInit {
     }
   
     if(this.layoutNode.dataType === 'number' || this.layoutNode.dataType === 'integer') {
-
+    
         value = parseInt(value);
         if(isNaN(value)){ //value cannot be typecased to a number
 

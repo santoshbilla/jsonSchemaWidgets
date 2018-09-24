@@ -56,22 +56,21 @@ formData: any;
               "boolean": {
                 "type": "boolean",
                 "title": "boolean",
-                "default": false
+                "default":false
+                          
               }, 
               "string": {
                 "type": "string",
                 "title": "string",
-                "default": "true"
+                "default": false
+             
               },
-              "boolean1": {
-                "type": "boolean",
-                "title": "boolean1",
-                "default": true
-              },
-              // "number": {
-              //   "type": "number",
-              //   "title": "number"
-              // }
+              "number": {
+                "type": "number",
+                "title": "number",
+                "default": 0
+              }
+
             },
             
         },
@@ -81,28 +80,27 @@ formData: any;
                 "key": "boolean",
                 "type": "q-switch",
                 "additional":{
-                 "falseValue": false
+                  "trueValue": true,
+                  "falseValue": false
+                  
                 }
               },
               {
                 "key": "string",
-                "type": "q-switch"
-                // "additional": {
-                //   "trueValue": "male",
-                //   "falseValue": "female"
-                // }
-              },
-              {
-                "key": "boolean1",
                 "type": "q-switch",
                 "additional":{
-                 "falseValue": false
+                  "trueValue": "true",
+                  "falseValue": "false"
                 }
               },
-              // {
-              //   "key": "number",
-              //   "type": "q-switch"
-              // }
+              {
+                "key": "number",
+                "type": "q-switch",
+                "additional":{
+                  "trueValue": 1,
+                  "falseValue": 0
+                }
+              }
             ],
             //  "data":{
             //   "string": "true",
