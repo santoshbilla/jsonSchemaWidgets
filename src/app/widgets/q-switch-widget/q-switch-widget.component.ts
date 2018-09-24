@@ -38,56 +38,49 @@ export class QswitchWidgetComponent implements OnInit {
  updateValue(event){
    console.log("event",event)
    this.qSwitchWidgetModel = event;
-  console.log("qSwitchwidgetmodel", this.qSwitchWidgetModel)
-  let result = this.getResult();
-    this.jsf.updateValue(this, result);
+   console.log("qSwitchwidgetmodel", this.qSwitchWidgetModel)
+   let result = this.getResult();
+   this.jsf.updateValue(this, result);
    
     }
 
   setDefault(){
-    if(this.layoutNode.dataType === 'boolean' ){
-
+    //default conditions for boolean and string type
+    if(this.layoutNode.dataType === 'boolean' || this.layoutNode.dataType === 'string' ){
       if(this.options.default){
-        if(this.layoutNode.options.additional){
-          this.getModelValue();
-        }else{
           this.qSwitchWidgetModel = this.options.default;
-        }
       }else{
-        console.log("default false or undefined",this.options.default)
-       this.getModelValue();
+      if(this.layoutNode.options.additional){
+        if(this.layoutNode.options.additional.trueValue === false || this.layoutNode.options.additional.falseValue=== true){
+          alert("invalid values entered")
+        }
+        this.qSwitchWidgetModel = this.layoutNode.options.additional.falseValue;
+ 
+      }
       this.qSwitchWidgetModel = false;
       }
-    }     
     }
+    //default conditions for number and integer type
+    if(this.layoutNode.dataType === 'number' || this.layoutNode.dataType === 'integer' ){
+      let result = this.getResult();
+      if(this.options.default){
+        if(this.layoutNode.options.additional){
+          if(this.options.default === this.layoutNode.options.additional.trueValue){
+            this.qSwitchWidgetModel = true;
+          }
+        }
 
-  getModelValue(){
-    console.log("in getModelValue")
-    console.log(this.layoutNode.options.additional)
-    console.log( typeof this.layoutNode.options.additional)
-    console.log("isEmpty",this.isEmpty(this.layoutNode.options.additional))
-    switch(this.isEmpty(this.layoutNode.options.additional)){
-      case true:{
-        console.log("Empty objectnull");
-        break;
-      }
-      case false:{
-        console.log("not empty");
-        break;
-      }
-      default:{
-        console.log("default");
-        break;
+       if(this.options.default === 1){
+         this.qSwitchWidgetModel = true;
+       }
+      }else{
+          this.qSwitchWidgetModel = result;
       }
     }
-   
-    
     }
     
   
-  isEmpty(obj) {
-      return Object.keys(obj).length === 0;
-  }
+
   
   getResult(): any {
     let result: any = this.qSwitchWidgetModel;
