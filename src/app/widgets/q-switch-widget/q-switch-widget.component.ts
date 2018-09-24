@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { JsonSchemaFormService } from "angular6-json-schema-form";
-import { AbstractControl, FormControl, } from '@angular/forms';
+import { AbstractControl} from '@angular/forms';
 
 interface Additional
 {
@@ -30,8 +30,8 @@ export class QswitchWidgetComponent implements OnInit {
   }
 
   ngOnInit() {  
-
-  console.log(this.layoutNode)
+    
+    
     this.options = {...this.layoutNode.options};
     this.additional = { ...this.additional, ...this.options.additional}
     this.setDefault(); 
@@ -48,24 +48,60 @@ export class QswitchWidgetComponent implements OnInit {
     }
 
   setDefault(){
+    let result;
+    result = this.jsf.getFormControlValue(this);
     //default conditions for boolean and string type
     if(this.layoutNode.dataType === 'boolean'){    
-      this.getModelValue();
-    
+     // if the data is defined
+      if(result != undefined){
+        console.log("check fromcontrol")
+        this.qSwitchWidgetModel = result;
+      }
+      //if default properties are given
+      if(this.options.default){
+        console.log("check default true")
+        this.qSwitchWidgetModel = this.options.default;
+      }  
     }else{
+      //the dataType is not boolean
       console.log("data type is not boolean")
+      //if data is present
+      if(result != undefined){ 
+        this.qSwitchWidgetModel = this.getModelValue(result);
+      }else{
+        //is data is not present
+        console.log("data undefined")
+        // If schema contains a DEFAULT value 
+        if(this.options.default){
+        // Check layout additional trueValue and falseValue
+          if(this.layoutNode.options.additional){
+          // If default value === trueValue set qSwitchWidgetModel to TRUE
+          // If default value === falseValue set qSwitchWidgetModel to FALSE 
+            this.qSwitchWidgetModel = this.getModelValue(this.options.default)
+          }
+        }
+      }
     }
   }
   
 
-  getModelValue(){
-    if(this.jsf.getFormControlValue(this)){
-      this.qSwitchWidgetModel = true
+  getModelValue(value){
+    console.log(value)
+    //Check layout additional trueValue and falseValue
+    if(this.layoutNode.options.additional){
+      console.log("additional properties are defined")
+   
+    //If data value === trueValue set qSwitchWidgetModel to TRUE
+    if(value === this.additional.trueValue){
+      this.qSwitchWidgetModel = true;
     }
-
-    if(this.options.default){
-      this.qSwitchWidgetModel = this.options.default;
-    }
+    //If data value === falseValue set qSwitchWidgetModel to FALSE
+    if(value === this.additional.falseValue){
+      this.qSwitchWidgetModel = false;
+    } 
+  }else{
+    this.qSwitchWidgetModel = value;
+  }
   return this.qSwitchWidgetModel;
   }
 

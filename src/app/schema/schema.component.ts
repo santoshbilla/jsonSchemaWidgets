@@ -47,8 +47,8 @@ formData: any;
         "type": "checkbox"  
       }]
     }*/
-      this.yourJsonSchema = 
-      {
+      this.yourJsonSchema = {
+
         "schema": 
         {
             "type": "object",
@@ -56,15 +56,22 @@ formData: any;
               "boolean": {
                 "type": "boolean",
                 "title": "boolean",
-                "default": true
-              
+                "default": false
+              }, 
+              "string": {
+                "type": "string",
+                "title": "string",
+                "default": "true"
               },
               "boolean1": {
                 "type": "boolean",
                 "title": "boolean1",
-           
-              
-              }
+                "default": true
+              },
+              // "number": {
+              //   "type": "number",
+              //   "title": "number"
+              // }
             },
             
         },
@@ -78,17 +85,33 @@ formData: any;
                 }
               },
               {
+                "key": "string",
+                "type": "q-switch"
+                // "additional": {
+                //   "trueValue": "male",
+                //   "falseValue": "female"
+                // }
+              },
+              {
                 "key": "boolean1",
                 "type": "q-switch",
                 "additional":{
                  "falseValue": false
                 }
-              }
+              },
+              // {
+              //   "key": "number",
+              //   "type": "q-switch"
+              // }
             ],
-            "data":{
-              "boolean1": true
-            }      
+            //  "data":{
+            //   "string": "true",
+            //  "boolean": true,
+            //  "boolean1": false,
+            //  "number": 1
+            // }      
       }
+  
    
      
     }
