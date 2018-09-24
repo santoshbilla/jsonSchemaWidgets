@@ -53,24 +53,42 @@ formData: any;
         {
             "type": "object",
             "properties": {
-              "number": {
-                "type": "number",
-                "title": "num",
-                "default": 5
+              "boolean": {
+                "type": "boolean",
+                "title": "boolean",
+                "default": false
+              
+              },
+              "boolean1": {
+                "type": "boolean",
+                "title": "boolean",
+             
+              
               }
             },
+            
         },
         "layout":
             [
               {
-                "key": "number",
+                "key": "boolean",
                 "type": "q-switch",
-                "additional": {
-                  "trueValue": 5,
-                  "falseValue": 7
+                "additional":{
+                 "falseValue": false
+                }
+              },
+              {
+                "key": "boolean1",
+                "type": "q-switch",
+                "additional":{
+                 "falseValue": false
                 }
               }
-            ]      
+            ],
+            "data":{
+              "boolean": false,
+              "boolean1": true
+            }      
       }
    
      
