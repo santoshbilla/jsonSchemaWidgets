@@ -56,7 +56,7 @@ formData: any;
               "number": {
                 "type": "number",
                 "title": "num",
-                "default": true
+                "default": 5
               }
             },
         },
