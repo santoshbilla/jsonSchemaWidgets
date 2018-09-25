@@ -54,7 +54,7 @@ export class QswitchWidgetComponent implements OnInit {
         this.qSwitchWidgetModel = result;
       }else{
       //if default properties are given
-      if(this.options.default){
+      if(this.options.default !=undefined){
         this.qSwitchWidgetModel = this.options.default;
       }  }
     }else{
@@ -65,7 +65,7 @@ export class QswitchWidgetComponent implements OnInit {
       }else{
         //is data is not present
         // If schema contains a DEFAULT value 
-        if(this.options.default !=undefined ){
+        if(this.options.default !=undefined){
             this.qSwitchWidgetModel = this.getModelValue(this.options.default);
         }
       }
