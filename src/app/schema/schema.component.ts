@@ -56,19 +56,19 @@ formData: any;
               "boolean": {
                 "type": "boolean",
                 "title": "boolean",
-                "default":false
+                "default":true
                           
               }, 
               "string": {
                 "type": "string",
                 "title": "string",
-                "default": false
+                "default": "hello"
              
               },
               "number": {
                 "type": "number",
                 "title": "number",
-                "default": 0
+                "default": 1
               }
 
             },
@@ -90,7 +90,7 @@ formData: any;
                 "type": "q-switch",
                 "additional":{
                   "trueValue": "true",
-                  "falseValue": "false"
+                  "falseValue": "bye"
                 }
               },
               {
@@ -102,12 +102,11 @@ formData: any;
                 }
               }
             ],
-            //  "data":{
-            //   "string": "true",
-            //  "boolean": true,
-            //  "boolean1": false,
-            //  "number": 1
-            // }      
+             "data":{
+              "string": "true",
+             "boolean": true,
+             "number": 0
+            }      
       }
   
    

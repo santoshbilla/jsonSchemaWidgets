@@ -51,32 +51,39 @@ export class QswitchWidgetComponent implements OnInit {
     let result;
     result = this.jsf.getFormControlValue(this);
     //default conditions for boolean and string type
-    if(this.layoutNode.dataType === 'boolean'){    
+    if(this.layoutNode.dataType === 'boolean'){  
+      console.log("type boolean",this.jsf.getFormControlValue(this))  
+      console.log(result)
      // if the data is defined
       if(result != undefined){
         console.log("check fromcontrol")
         this.qSwitchWidgetModel = result;
-      }
+      }else{
       //if default properties are given
       if(this.options.default){
         console.log("check default true")
         this.qSwitchWidgetModel = this.options.default;
-      }  
+      }  }
     }else{
       //the dataType is not boolean
       console.log("data type is not boolean")
+      console.log("res", result)
+      console.log("model", this.qSwitchWidgetModel)
+      console.log("value data", this.jsf.getFormControlValue(this))
       //if data is present
       if(result != undefined){ 
+        console.log("data defined result",result)
+        console.log("data defined model", this.qSwitchWidgetModel)
+        console.log("additional", this.additional)
         this.qSwitchWidgetModel = this.getModelValue(result);
       }else{
+        console.log("data undefined",result)
         //is data is not present
         console.log("data undefined")
         // If schema contains a DEFAULT value 
         if(this.options.default){
-        // Check layout additional trueValue and falseValue
-          // If default value === trueValue set qSwitchWidgetModel to TRUE
-          // If default value === falseValue set qSwitchWidgetModel to FALSE 
-            this.qSwitchWidgetModel = this.getModelValue(this.options.default)
+            this.qSwitchWidgetModel = this.getModelValue(this.options.default);
+
         }
       }
     }
@@ -84,24 +91,22 @@ export class QswitchWidgetComponent implements OnInit {
   
 
   getModelValue(value){
-    console.log(value)
+    let result: boolean;
+    result =  false;
+    console.log("in getModelValue", result)
     //Check layout additional trueValue and falseValue
-    if(this.layoutNode.options.additional){
-      console.log("additional properties are defined")
-    //additional is given but is null
-        this.qSwitchWidgetModel = this.typecastValue(value, this.qSwitchWidgetModel);;
     //If data value === trueValue set qSwitchWidgetModel to TRUE
     if(value === this.additional.trueValue){
       console.log("in truevalue==value")
-      this.qSwitchWidgetModel = true;
+     result = true;
     }
     //If data value === falseValue set qSwitchWidgetModel to FALSE
     if(value === this.additional.falseValue){
-      console.log("in truevalue==value")
-      this.qSwitchWidgetModel = false;
-    } 
-  }
-  return this.qSwitchWidgetModel;
+      console.log("in falsevalue==value")
+     result = false;
+    }
+  console.log("getmodel return value", result)
+  return result;
   }
 
   getResult(): any {
