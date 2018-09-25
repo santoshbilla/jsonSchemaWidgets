@@ -62,7 +62,7 @@ formData: any;
               "string": {
                 "type": "string",
                 "title": "string",
-                "default": "hello"
+                "default": "false"
              
               },
               "number": {
@@ -90,7 +90,7 @@ formData: any;
                 "type": "q-switch",
                 "additional":{
                   "trueValue": "true",
-                  "falseValue": "bye"
+                  "falseValue": "false"
                 }
               },
               {
@@ -103,8 +103,8 @@ formData: any;
               }
             ],
              "data":{
-              "string": "true",
-             "boolean": true,
+              "string": "false",
+             "boolean": false,
              "number": 0
             }      
       }

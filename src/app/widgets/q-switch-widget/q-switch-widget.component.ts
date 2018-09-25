@@ -47,28 +47,30 @@ export class QswitchWidgetComponent implements OnInit {
   setDefault(){
     let result;
     result = this.jsf.getFormControlValue(this);
+    console.log("controlValue", result)
+    console.log("default", this.options.default)
     //default conditions for boolean and string type
     if(this.layoutNode.dataType === 'boolean'){  
+      if(this.options.default !=undefined){
+        this.qSwitchWidgetModel = this.options.default;
+      }
      // if the data is defined
       if(result != undefined){
         this.qSwitchWidgetModel = result;
-      }else{
-      //if default properties are given
-      if(this.options.default !=undefined){
-        this.qSwitchWidgetModel = this.options.default;
-      }  }
+      }
     }else{
       //the dataType is not boolean
+         //is data is not present
+        // If schema contains a DEFAULT value 
+      if(this.options.default != undefined){
+          this.qSwitchWidgetModel = this.getModelValue(this.options.default);
+      }
       //if data is present
       if(result != undefined){ 
          this.qSwitchWidgetModel = this.getModelValue(result);
-      }else{
-        //is data is not present
-        // If schema contains a DEFAULT value 
-        if(this.options.default !=undefined){
-            this.qSwitchWidgetModel = this.getModelValue(this.options.default);
-        }
       }
+     
+      
     }
   }
   
