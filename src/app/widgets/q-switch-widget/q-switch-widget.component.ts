@@ -81,10 +81,6 @@ export class QswitchWidgetComponent implements OnInit {
     if(value === this.additional.trueValue){
      result = true;
     }
-    //If data value === falseValue set qSwitchWidgetModel to FALSE
-    if(value === this.additional.falseValue){
-     result = false;
-    }
   return result;
   }
 
