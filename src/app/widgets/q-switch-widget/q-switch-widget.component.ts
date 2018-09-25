@@ -60,8 +60,8 @@ export class QswitchWidgetComponent implements OnInit {
       }
     }else{
       //the dataType is not boolean
-         //is data is not present
-        // If schema contains a DEFAULT value 
+      //is data is not present
+      // If schema contains a DEFAULT value 
       if(this.options.default != undefined){
           this.qSwitchWidgetModel = this.getModelValue(this.options.default);
       }
@@ -69,8 +69,6 @@ export class QswitchWidgetComponent implements OnInit {
       if(result != undefined){ 
          this.qSwitchWidgetModel = this.getModelValue(result);
       }
-     
-      
     }
   }
   

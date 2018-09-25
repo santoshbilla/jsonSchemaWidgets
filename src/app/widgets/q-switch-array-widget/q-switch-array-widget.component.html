@@ -1,0 +1,23 @@
+<!-- <label *ngIf="options?.title"
+[class]="options?.labelHtmlClass || ''"
+[style.display]="options?.notitle ? 'none' : ''"
+[innerHTML]="options?.title"></label> -->
+
+<!-- 'horizontal' = checkboxes-inline or checkboxbuttons -->
+
+  <div *ngFor="let Item of checkboxList; let i = index" >
+    <span [innerHTML]= "Item.name"></span>
+      <div class="switch">
+      <label  class="form-check-label">
+          <input type="checkbox"
+          class="form-check-input"
+          [(ngModel)]="Item.value" name="Item.name"
+          (ngModelChange)="updateValue($event)">
+
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  
+
+

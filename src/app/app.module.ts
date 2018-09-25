@@ -15,6 +15,7 @@ import { InputBoxWidgetComponent } from './widgets/input-box-widget/input-box-wi
 import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widget.component';
 import { QswitchWidgetComponent } from './widgets/q-switch-widget/q-switch-widget.component';
+import { QswitchArrayWidgetComponent } from './widgets/q-switch-array-widget/q-switch-array-widget.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,6 +25,7 @@ import { QswitchWidgetComponent } from './widgets/q-switch-widget/q-switch-widge
     MarkdownEditorWidgetComponent,
     UiSwitchWidgetComponent,
     QswitchWidgetComponent,
+    QswitchArrayWidgetComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,7 +48,8 @@ import { QswitchWidgetComponent } from './widgets/q-switch-widget/q-switch-widge
     InputBoxWidgetComponent, 
     MarkdownEditorWidgetComponent, 
     UiSwitchWidgetComponent,
-    QswitchWidgetComponent
+    QswitchWidgetComponent,
+    QswitchArrayWidgetComponent
   ]
      
 })

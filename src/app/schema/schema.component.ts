@@ -6,6 +6,7 @@ import { ɵc as WidgetLibraryService } from 'angular6-json-schema-form';
 import { MarkdownEditorWidgetComponent } from '../widgets/markdownEditorWidget/markdown-editor-widget/markdown-editor-widget.component';
 import { UiSwitchWidgetComponent } from "../widgets/ui-switch-widget/ui-switch-widget.component";
 import { QswitchWidgetComponent } from "../widgets/q-switch-widget/q-switch-widget.component";
+import { QswitchArrayWidgetComponent } from '../widgets/q-switch-array-widget/q-switch-array-widget.component';
 @Component({
   selector: 'app-schema',
   templateUrl: './schema.component.html',
@@ -24,14 +25,16 @@ formData: any;
     widgetLibrary.registerWidget('radhika', InputBoxWidgetComponent);
     widgetLibrary.registerWidget('q-markdown',MarkdownEditorWidgetComponent);
     widgetLibrary.registerWidget('q-uiSwitch', UiSwitchWidgetComponent);
-    widgetLibrary.registerWidget('q-switch', QswitchWidgetComponent)
-   }
+    widgetLibrary.registerWidget('q-switch', QswitchWidgetComponent);
+    widgetLibrary.registerWidget('q-switchArray', QswitchArrayWidgetComponent);
+  }
     yourNewWidgets = {
     
    'sample': HelloWorldWidgetComponent, // Add new 'sample' widget
    'q-markdown': MarkdownEditorWidgetComponent,
    'q-uiSwitch' : UiSwitchWidgetComponent,
-   'q-switch' : QswitchWidgetComponent
+   'q-switch' : QswitchWidgetComponent,
+   'q-switchArray' : QswitchArrayWidgetComponent
   }
   ngOnInit() {
    
@@ -53,60 +56,33 @@ formData: any;
         {
             "type": "object",
             "properties": {
-              "boolean": {
-                "type": "boolean",
-                "title": "boolean",
-                "default":true
-                          
-              }, 
-              "string": {
-                "type": "string",
-                "title": "string",
-                "default": "false"
-             
-              },
-              "number": {
-                "type": "number",
-                "title": "number",
-                "default": 1
+              "array": {
+                "title": "Array with titleMap",
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "enum": [ "a", "b", "c" ]
+                }
               }
-
             },
             
         },
         "layout":
             [
-              {
-                "key": "boolean",
-                "type": "q-switch",
-                "additional":{
-                  "trueValue": true,
-                  "falseValue": false
-                  
-                }
-              },
-              {
-                "key": "string",
-                "type": "q-switch",
-                "additional":{
-                  "trueValue": "true",
-                  "falseValue": "false"
-                }
-              },
-              {
-                "key": "number",
-                "type": "q-switch",
-                "additional":{
-                  "trueValue": 1,
-                  "falseValue": 0
-                }
-              }
+              { "key": "array",
+              "type": "q-switchArray",
+
+              // "titleMap": [
+              //   { "value": "a", "name": "A" },
+              //   { "value": "b", "name": "B" }
+              // ]
+            }
             ],
-             "data":{
-              "string": "false",
-             "boolean": false,
-             "number": 0
-            }      
+            //  "data":{
+            //   "string": "false",
+            //  "boolean": false,
+            //  "number": 0
+            // }      
       }
   
    
