@@ -26,8 +26,7 @@ export class QswitchArrayWidgetComponent implements OnInit {
         this.options.titleMap || this.options.enumNames, this.options.enum, true
       );
     console.log("for each values")
-   console.log("controlValue",this.jsf.getFormControl(this))
-    this.checkboxList.forEach(checkboxItem => console.log(checkboxItem))
+    console.log("controlValue",this.jsf.getFormControl(this))
     console.log(this.checkboxList)
     this.jsf.getFormControl(this);
     
@@ -35,9 +34,15 @@ export class QswitchArrayWidgetComponent implements OnInit {
 
 }
 updateValue(event) {
- console.log("in update event", event)
+  for (let checkboxItem of this.checkboxList) {
+    if(event.target.value === checkboxItem.value){
+      checkboxItem.checked = event.target.checked;
+    }
   }
-
+ console.log("in update event", event)
+ this.jsf.updateArrayCheckboxList(this, this.checkboxList);
+  }
+ 
 }
 
 

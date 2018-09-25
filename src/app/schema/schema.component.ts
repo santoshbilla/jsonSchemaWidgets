@@ -57,11 +57,11 @@ formData: any;
             "type": "object",
             "properties": {
               "array": {
-                "title": "Array with titleMap",
+                "title": "Hobbies",
                 "type": "array",
                 "items": {
                   "type": "string",
-                  "enum": [ "a", "b", "c" ]
+                  "enum": [ "Reading", "Dancing", "C" ]
                 }
               }
             },
@@ -72,10 +72,11 @@ formData: any;
               { "key": "array",
               "type": "q-switchArray",
 
-              // "titleMap": [
-              //   { "value": "a", "name": "A" },
-              //   { "value": "b", "name": "B" }
-              // ]
+              "titleMap": [
+                { "value": "Reading", "name": "Reading" },
+                { "value": "Dancing", "name": "Dancing" },
+                { "value": "C", "name": "C" },
+              ]
             }
             ],
             //  "data":{
