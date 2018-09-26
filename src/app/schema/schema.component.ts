@@ -57,12 +57,13 @@ formData: any;
             "type": "object",
             "properties": {
               "array": {
+
                 "title": "Hobbies",
                 "type": "array",
-                "default":["Reading", "C"],
+               
                 "items": {
                   "type": "string",
-                  "enum": [ "Reading", "Dancing", "C" ]
+                   "enum": [ "Reading", "Dancing", "C" ]
                 }
               }
             },
@@ -72,7 +73,9 @@ formData: any;
             [
               { "key": "array",
               "type": "q-switchArray",
-
+            "additional":{
+              "layoutOrientation": "horizontal",
+            },
               "titleMap": [
                 { "value": "Reading", "name": "Reading" },
                 { "value": "Dancing", "name": "Dancing" },
@@ -81,9 +84,7 @@ formData: any;
             }
             ],
             //  "data":{
-            //   "string": "false",
-            //  "boolean": false,
-            //  "number": 0
+            //   "array":["Dancing", "C"],
             // }      
       }
   

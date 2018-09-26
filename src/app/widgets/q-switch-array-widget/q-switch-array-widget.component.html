@@ -3,15 +3,39 @@
 [style.display]="options?.notitle ? 'none' : ''"
 [innerHTML]="options?.title"></label> -->
 
+
+
+
+
 <!-- 'horizontal' = checkboxes-inline or checkboxbuttons -->
 
+  <div  *ngIf="layoutOrientation === 'horizontal'" [class]="options?.htmlClass || ''">
+    <label *ngFor="let Item of checkboxList">
+      <div class="switch">
+      <label  class="form-check-label">   
+          <input type="checkbox"  
+          [checked]="Item.checked"
+          
+          [value]="Item.value" name="Item.name"
+          (change)="updateValue($event)">
+          <span class="slider round"></span>
+          </label>
+      </div>
+      <span [innerHTML]= "Item.name"></span>
+
+    </label>
+  </div>
+  
+
+<!-- 'vertical' = checkboxes  -->
+<div  *ngIf="layoutOrientation === 'vertical'" >
   <div *ngFor="let Item of checkboxList" >
     
       <div class="switch">
       <label  class="form-check-label">
           <input type="checkbox"  
           [checked]="Item.checked"
-          class="form-check-input"
+          
           [value]="Item.value" name="Item.name"
           (change)="updateValue($event)">
 
@@ -19,7 +43,8 @@
         </label>
       </div>
       <span [innerHTML]= "Item.name"></span>
-    </div>
+  </div>
   
+</div>
 
 
