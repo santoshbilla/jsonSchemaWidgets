@@ -63,7 +63,7 @@ formData: any;
                
                 "items": {
                   "type": "string",
-                   "enum": [ "Reading", "Dancing", "C" ]
+                   "enum": [ "Reading", "Dancing", "C" , "D"]
                 }
               }
             },
@@ -73,19 +73,20 @@ formData: any;
             [
               { "key": "array",
               "type": "q-switchArray",
-            "additional":{
-              "layoutOrientation": "horizontal",
-            },
+              "additional":{
+                "layoutOrientation": "horizontal"
+              },
               "titleMap": [
                 { "value": "Reading", "name": "Reading" },
                 { "value": "Dancing", "name": "Dancing" },
                 { "value": "C", "name": "C" },
+                { "value": "D", "name": "D" },
               ]
             }
             ],
-            //  "data":{
-            //   "array":["Dancing", "C"],
-            // }      
+             "data":{
+              "array":["Dancing", "C", "D"],
+            }      
       }
   
    
