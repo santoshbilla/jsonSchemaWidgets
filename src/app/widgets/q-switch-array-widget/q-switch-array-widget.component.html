@@ -6,10 +6,11 @@
 <!-- 'horizontal' = checkboxes-inline or checkboxbuttons -->
 
   <div *ngFor="let Item of checkboxList" >
-    <span [innerHTML]= "Item.name"></span>
+    
       <div class="switch">
       <label  class="form-check-label">
-          <input type="checkbox"  [checked]="Item.checked"
+          <input type="checkbox"  
+          [checked]="Item.checked"
           class="form-check-input"
           [value]="Item.value" name="Item.name"
           (change)="updateValue($event)">
@@ -17,6 +18,7 @@
           <span class="slider round"></span>
         </label>
       </div>
+      <span [innerHTML]= "Item.name"></span>
     </div>
   
 

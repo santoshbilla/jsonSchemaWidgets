@@ -59,6 +59,7 @@ formData: any;
               "array": {
                 "title": "Hobbies",
                 "type": "array",
+                "default":["Reading", "C"],
                 "items": {
                   "type": "string",
                   "enum": [ "Reading", "Dancing", "C" ]

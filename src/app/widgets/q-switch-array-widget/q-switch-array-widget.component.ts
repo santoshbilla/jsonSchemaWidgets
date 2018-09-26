@@ -9,39 +9,39 @@ import { buildTitleMap, TitleMapItem } from "angular6-json-schema-form";
 })
 export class QswitchArrayWidgetComponent implements OnInit {
   formControl: AbstractControl;
+  boundControl : boolean =  false;
   @Input() layoutNode: any;
-  @Input() layoutOrientation : any;
   checkboxList: TitleMapItem[] = [];
 
   options: any;
   constructor(private jsf : JsonSchemaFormService) { }
 
   ngOnInit() {
+    console.log("boundcontrol",this.boundControl)
     this.options = this.layoutNode.options || {};
     this.jsf.initializeControl(this);
-    console.log(this.layoutNode.type)
-    this.layoutOrientation = (this.layoutNode.type === 'q-switchArray') ? 'horizontal' : 'vertical';
-    console.log(this.checkboxList)
       this.checkboxList = buildTitleMap(
         this.options.titleMap || this.options.enumNames, this.options.enum, true
       );
-    console.log("for each values")
-    console.log("controlValue",this.jsf.getFormControl(this))
-    console.log(this.checkboxList)
     this.jsf.getFormControl(this);
-    
-  
-
+    if (this.boundControl) {
+      let result; 
+      result =  this.jsf.getFormControl(this)
+      this.checkboxList.forEach(checkboxItem =>checkboxItem.checked =  result.value.includes(checkboxItem.value));
+  }
 }
 updateValue(event) {
   for (let checkboxItem of this.checkboxList) {
     if(event.target.value === checkboxItem.value){
+
       checkboxItem.checked = event.target.checked;
     }
   }
- console.log("in update event", event)
- this.jsf.updateArrayCheckboxList(this, this.checkboxList);
+  if(this.boundControl){
+    this.jsf.updateArrayCheckboxList(this, this.checkboxList);
   }
+
+}
  
 }
 
