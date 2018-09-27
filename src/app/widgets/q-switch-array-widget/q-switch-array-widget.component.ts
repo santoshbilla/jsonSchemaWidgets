@@ -43,6 +43,7 @@ export class QswitchArrayWidgetComponent implements OnInit {
 }
 //selectAll switch value based on switch values
 selectAllSwitchValue(){
+  this.selectAllSwitchModel = false;
   if(this.checkboxList.filter(items => items.checked).length ===this.checkboxList.length){
     this.selectAllSwitchModel = true;
   }
