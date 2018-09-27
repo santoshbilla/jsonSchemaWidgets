@@ -57,11 +57,11 @@ updateValue(event) {
 }
 updateSelectAllSwitch(event){
   this.selectAllSwitchModel = event;
-    //if the selectall is true then select all
+    //if the select all is true then all values true
     if(event){
       this.checkboxList.forEach(checkboxItem => checkboxItem.checked = true)
     }
-    //if select all is false then take the default values set in schema and layout
+    //if select all is false the all values false
     else{
       this.checkboxList.forEach(item=> item.checked = false)
     }
