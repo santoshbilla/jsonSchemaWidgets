@@ -18,10 +18,7 @@ export class QswitchArrayWidgetComponent implements OnInit {
   constructor(private jsf : JsonSchemaFormService) { }
 
   ngOnInit() {
-    console.log("boundcontrol",this.boundControl)
     this.options = this.layoutNode.options|| {};
-
-    console.log("layoutnodetype",this.layoutNode.type)
     //check if additional properties are given
     if(this.layoutNode.options.additional != undefined){
       //check if layoutOrientation is given
@@ -59,16 +56,13 @@ updateValue(event) {
 
 }
 updateSelectAllSwitch(event){
-  console.log("updateSelectAllSwitch",event)
   this.selectAllSwitchModel = event;
     //if the selectall is true then select all
     if(event){
-      console.log("select all event is true")
       this.checkboxList.forEach(checkboxItem => checkboxItem.checked = true)
     }
     //if select all is false then take the default values set in schema and layout
     else{
-      console.log("select all event is false")
       this.checkboxList.forEach(item=> item.checked = false)
     }
   this.jsf.updateArrayCheckboxList(this, this.checkboxList);
