@@ -57,13 +57,11 @@ formData: any;
             "type": "object",
             "properties": {
               "array": {
-
-                "title": "Hobbies",
+                "title": "Array with enum defaults to 'checkboxes'",
                 "type": "array",
-               
                 "items": {
                   "type": "string",
-                   "enum": [ "Reading", "Dancing", "C" , "D"]
+                  "enum": [ "Reading", "Dancing", "c" ]
                 }
               }
             },
@@ -79,14 +77,14 @@ formData: any;
               "titleMap": [
                 { "value": "Reading", "name": "Reading" },
                 { "value": "Dancing", "name": "Dancing" },
-                { "value": "C", "name": "C" },
-                { "value": "D", "name": "D" },
+                { "value": "c", "name": "C" }
               ]
             }
             ],
-             "data":{
-              "array":["Dancing", "C", "D"],
-            }      
+            "data":{
+              "array":["Reading"] 
+            }
+         
       }
   
    
@@ -94,12 +92,9 @@ formData: any;
     }
    
     onSubmit(event) {
-      console.log("insubmit", event)
       this.formData = event;
-     // console.log(this.formData)
     }
     onChangesFunction(event){
-      console.log("onchanges", event)
       this.data = event;
     }
 }

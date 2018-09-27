@@ -10,11 +10,11 @@ import { buildTitleMap, TitleMapItem } from "angular6-json-schema-form";
 export class QswitchArrayWidgetComponent implements OnInit {
   formControl: AbstractControl;
   boundControl : boolean =  false;
+  selectAllSwitchModel : boolean = false;
   @Input() layoutNode: any;
   checkboxList: TitleMapItem[] = [];
   layoutOrientation : any = 'vertical';
   options: any;
-  additional;
   constructor(private jsf : JsonSchemaFormService) { }
 
   ngOnInit() {
@@ -57,6 +57,21 @@ updateValue(event) {
     this.jsf.updateArrayCheckboxList(this, this.checkboxList);
   }
 
+}
+updateSelectAllSwitch(event){
+  console.log("updateSelectAllSwitch",event)
+  this.selectAllSwitchModel = event;
+    //if the selectall is true then select all
+    if(event){
+      console.log("select all event is true")
+      this.checkboxList.forEach(checkboxItem => checkboxItem.checked = true)
+    }
+    //if select all is false then take the default values set in schema and layout
+    else{
+      console.log("select all event is false")
+      this.checkboxList.forEach(item=> item.checked = false)
+    }
+  this.jsf.updateArrayCheckboxList(this, this.checkboxList);
 }
  
 }
