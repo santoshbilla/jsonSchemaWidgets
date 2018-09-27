@@ -5,6 +5,10 @@
     height: 34px;
    
   }
+  .horizontalSwitchContainer, .verticalSwitchContainer{
+    padding : 5px;
+    margin-left: 5px;
+  }
   .selectAllContainer, .horizontalSwitch, .verticalSwitch{
     padding: 5px;
   }
