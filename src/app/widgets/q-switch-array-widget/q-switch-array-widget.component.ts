@@ -42,11 +42,14 @@ export class QswitchArrayWidgetComponent implements OnInit {
       this.checkboxList.forEach(checkboxItem =>checkboxItem.checked =  result.value.includes(checkboxItem.value));
   }
   //default SelectAll switch value
+  this.selectAllSwitchValue();
+}
+selectAllSwitchValue(){
+  console.log("in updateselectAllSwitchvalue method")
   if(this.checkboxList.filter(items => items.checked).length ===this.checkboxList.length){
     this.selectAllSwitchModel = true;
   }
 }
-
 updateValue(event) {
   for (let checkboxItem of this.checkboxList) {
     if(event.target.value === checkboxItem.value){
@@ -54,6 +57,8 @@ updateValue(event) {
     }
   }
  //if all the items are checked, make the switch all true
+ this.selectAllSwitchValue();
+
   if(this.boundControl){
     this.jsf.updateArrayCheckboxList(this, this.checkboxList);
   }
@@ -69,8 +74,8 @@ updateSelectAllSwitch(event){
     else{
       this.checkboxList.forEach(item=> item.checked = false)
     }
-
-  this.jsf.updateArrayCheckboxList(this, this.checkboxList);
+ 
+   this.jsf.updateArrayCheckboxList(this, this.checkboxList);
 
 }
  
