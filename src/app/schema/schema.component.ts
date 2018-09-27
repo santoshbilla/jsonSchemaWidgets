@@ -82,7 +82,7 @@ formData: any;
             }
             ],
             "data":{
-              "array":["Reading"] 
+              "array": [ "Reading",  "c" ] 
             }
          
       }
