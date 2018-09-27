@@ -29,12 +29,9 @@ export class QswitchArrayWidgetComponent implements OnInit {
     }
     //Initialize control for jsf
     this.jsf.initializeControl(this);
-    
       this.checkboxList = buildTitleMap(
         this.options.titleMap || this.options.enumNames, this.options.enum, true
       );
-    this.jsf.getFormControl(this);
-
     //check the layout based on data provided by the user
     if (this.boundControl) {
       let result; 
@@ -44,8 +41,8 @@ export class QswitchArrayWidgetComponent implements OnInit {
   //default SelectAll switch value
   this.selectAllSwitchValue();
 }
+//selectAll switch value based on switch values
 selectAllSwitchValue(){
-  console.log("in updateselectAllSwitchvalue method")
   if(this.checkboxList.filter(items => items.checked).length ===this.checkboxList.length){
     this.selectAllSwitchModel = true;
   }
@@ -58,7 +55,6 @@ updateValue(event) {
   }
  //if all the items are checked, make the switch all true
  this.selectAllSwitchValue();
-
   if(this.boundControl){
     this.jsf.updateArrayCheckboxList(this, this.checkboxList);
   }
@@ -72,7 +68,7 @@ updateSelectAllSwitch(event){
     }
     //if select all is false the all values false
     else{
-      this.checkboxList.forEach(item=> item.checked = false)
+      this.checkboxList.forEach(checkboxItem=> checkboxItem.checked = false)
     }
  
    this.jsf.updateArrayCheckboxList(this, this.checkboxList);
