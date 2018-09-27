@@ -72,7 +72,7 @@ formData: any;
               { "key": "array",
               "type": "q-switchArray",
               "additional":{
-                "layoutOrientation": "horizontal"
+                "layoutOrientation": "vertical"
               },
               "titleMap": [
                 { "value": "Reading", "name": "Reading" },

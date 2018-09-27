@@ -1,7 +1,7 @@
 <!-- 'horizontal' = checkboxes-inline or checkboxbuttons -->
 <div  *ngIf="layoutOrientation === 'horizontal'" [class]="options?.htmlClass || ''">
 <!-- Select all Switch -->
-<div>
+<div class="selectAllContainer">
     <div class="switch">
         <label class="form-check-label">
           <input
@@ -16,7 +16,7 @@
       <span>Select All</span>
     </div>
     <!-- Select all switch end -->
-    <label *ngFor="let Item of checkboxList">
+    <label class="horizontalSwitch" *ngFor="let Item of checkboxList">
       <div class="switch">
       <label [class]="form-check-label" >   
           <input type="checkbox"  
@@ -34,8 +34,7 @@
 <!-- 'vertical' = checkboxes  -->
 <div  *ngIf="layoutOrientation === 'vertical'" >
   <!-- Select all Switch -->
-  <div>
-   
+  <div class="selectAllContainer">
     <div class="switch">
         <label class="form-check-label">
           <input
@@ -51,18 +50,22 @@
       <span>Select All</span>
     </div>
     <!-- Select all switch end -->
+  
   <div *ngFor="let Item of checkboxList" >
-      <div class="switch">
-      <label [class]="form-check-label">
-          <input type="checkbox"  
-          [checked]="Item.checked"
-          [value]="Item.value" name="Item.name"
-          (change)="updateValue($event)">
-          <span class="slider round"></span>
-        </label>
+      <div class="verticalSwitch">
+        <div class="switch">
+          <label [class]="form-check-label">
+              <input type="checkbox"
+          
+              [checked]="Item.checked"
+              [value]="Item.value" name="Item.name"
+              (change)="updateValue($event)">
+              <span class="slider round"></span>
+            </label>
+        </div>
+       <span [innerHTML]= "Item.name"></span>
       </div>
-      <span [innerHTML]= "Item.name"></span>
-  </div>
+    </div>
   </div>
 
 

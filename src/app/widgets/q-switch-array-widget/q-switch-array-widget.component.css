@@ -3,8 +3,11 @@
     display: inline-block;
     width: 60px;
     height: 34px;
+   
   }
-  
+  .selectAllContainer, .horizontalSwitch, .verticalSwitch{
+    padding: 5px;
+  }
   /* Hide default HTML checkbox */
   .switch input {display:none;}
   
@@ -50,8 +53,10 @@
   /* Rounded sliders */
   .slider.round {
     border-radius: 34px;
+  
   }
   
   .slider.round:before {
     border-radius: 50%;
+  
   }
