@@ -6,6 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { LMarkdownEditorModule } from 'ngx-markdown-editor';
 import { UiSwitchModule } from "ngx-ui-switch";
+import {DndModule} from 'ngx-dnd';
 
 import { AppComponent } from './app.component';
 import { SchemaComponent } from './schema/schema.component';
@@ -16,8 +17,10 @@ import { MarkdownEditorWidgetComponent } from './widgets/markdownEditorWidget/ma
 import {UiSwitchWidgetComponent} from './widgets/ui-switch-widget/ui-switch-widget.component';
 import { QswitchWidgetComponent } from './widgets/q-switch-widget/q-switch-widget.component';
 import { QswitchArrayWidgetComponent } from './widgets/q-switch-array-widget/q-switch-array-widget.component';
+import { DndComponent } from './dnd/dnd.component';
 @NgModule({
   declarations: [
+    
     AppComponent,
     SchemaComponent,
     HelloWorldWidgetComponent,
@@ -26,6 +29,7 @@ import { QswitchArrayWidgetComponent } from './widgets/q-switch-array-widget/q-s
     UiSwitchWidgetComponent,
     QswitchWidgetComponent,
     QswitchArrayWidgetComponent,
+    DndComponent,
   ],
   imports: [
     BrowserModule,
@@ -38,11 +42,13 @@ import { QswitchArrayWidgetComponent } from './widgets/q-switch-array-widget/q-s
     LMarkdownEditorModule,
     UiSwitchModule.forRoot({
       
-    })
+    }),
+    DndModule.forRoot()
    
   ],
   providers: [],
   bootstrap: [AppComponent],
+  exports:[DndModule],
   entryComponents:[     
     HelloWorldWidgetComponent, 
     InputBoxWidgetComponent, 

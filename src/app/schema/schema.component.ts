@@ -60,8 +60,8 @@ formData: any;
                 "title": "Array with enum defaults to 'checkboxes'",
                 "type": "array",
                 "items": {
-                  "type": "string",
-                  "enum": [ "Reading", "Dancing", "c" ]
+                  "type": "number",
+                  "enum": [ 1, 3 , 5]
                 }
               }
             },
@@ -75,14 +75,14 @@ formData: any;
                 "layoutOrientation": "vertical"
               },
               "titleMap": [
-                { "value": "Reading", "name": "Reading" },
-                { "value": "Dancing", "name": "Dancing" },
-                { "value": "c", "name": "C" }
+                { "value": "4", "name": "Reading" },
+                { "value": "3", "name": "Dancing" },
+                { "value": "5", "name": "C" }
               ]
             }
             ],
             "data":{
-              "array": [] 
+              "array": ["3"] 
             }
          
       }

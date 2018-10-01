@@ -1,40 +1,6 @@
 <!-- 'horizontal' = checkboxes-inline or checkboxbuttons -->
-<div  *ngIf="layoutOrientation === 'horizontal'" [class]="options?.htmlClass || ''">
-<!-- Select all Switch -->
-<div class="selectAllContainer">
-    <div class="switch">
-        <label class="form-check-label">
-          <input
-            [class]="form-check-input"
-            [checked]="options?.checked"
-           [(ngModel)]="selectAllSwitchModel"
-            type="checkbox"
-            (ngModelChange)="updateSelectAllSwitch($event)">
-          <span class="slider round"></span>
-      </label>
-    </div> 
-      <span>Select All</span>
-    </div>
-    <!-- Select all switch end -->
-<div class="horizontalSwitchContainer">
-    <label class="horizontalSwitch" *ngFor="let Item of checkboxList">
-      <div class="switch">
-      <label [class]="form-check-label" >   
-          <input type="checkbox"  
-          [checked]="Item.checked"
-          [value]="Item.value" name="Item.name"
-          (change)="updateValue($event)">
-          <span class="slider round"></span>
-          </label>
-      </div>
-      <span [innerHTML]= "Item.name"></span>
-    </label>
-    </div>
-  </div>
-  
 
 <!-- 'vertical' = checkboxes  -->
-<div  *ngIf="layoutOrientation === 'vertical'" >
   <!-- Select all Switch -->
   <div class="selectAllContainer">
     <div class="switch">
@@ -46,30 +12,29 @@
             type="checkbox"
             (ngModelChange)="updateSelectAllSwitch($event)">
           <span class="slider round"></span>
+          <span>Select All</span>
+
       </label>
 
       </div> 
-      <span>Select All</span>
     </div>
     <!-- Select all switch end -->
-  <div class="verticalSwitchContainer">
-  <div *ngFor="let Item of checkboxList" >
-      <div class="verticalSwitch">
-        <div class="switch">
-          <label [class]="form-check-label">
+  <div [class.form-inline]="layoutOrientation === 'horizontal'" >
+  <div *ngFor="let Item of checkboxList"  >
+        <div class="switch form-group" >
+          <label >
               <input type="checkbox"
-          
               [checked]="Item.checked"
               [value]="Item.value" name="Item.name"
               (change)="updateValue($event)">
               <span class="slider round"></span>
+              <span [innerHTML]= "Item.name"></span>
+
             </label>
         </div>
-       <span [innerHTML]= "Item.name"></span>
-      </div>
     </div>
   </div>
-  </div>
+  
 
 
 

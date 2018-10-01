@@ -1,0 +1,5 @@
+<ul><li *ngFor="let item of collection|slice:0:show let i=index">
+    {{item.id}}
+    <button *ngIf="i==9 && show == 10" (click)="show = show+10">More</button>
+  </li>
+</ul>
