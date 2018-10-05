@@ -1,5 +1,7 @@
-<ul><li *ngFor="let item of collection|slice:0:show let i=index">
-    {{item.id}}
-    <button *ngIf="i==9 && show == 10" (click)="show = show+10">More</button>
+
+<ul class="list-group">
+  <li class="list-group-item" *ngFor="let item of collection| slice: offset : offset+limit">
+ {{item.title}}
   </li>
+  <button class="btn btn-secondary" (click)="getRecords(offset)" [disabled]="offset === collection.length - 10">next</button>
 </ul>

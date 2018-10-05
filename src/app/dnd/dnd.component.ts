@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { THIS_EXPR } from '../../../node_modules/@angular/compiler/src/output/output_ast';
 
 @Component({
   selector: 'app-dnd',
@@ -6,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./dnd.component.css']
 })
 export class DndComponent implements OnInit {
-  show = 10;
-collection = [
+  offset = 0;
+  limit = 10;
+  collection = [
     {
       "userId": 1,
       "id": 1,
@@ -1209,10 +1211,17 @@ collection = [
       "completed": false
     }
   ];
-
   constructor() { }
 
-  ngOnInit() {
+  ngOnInit() {  
   }
+  
+  getRecords(currentOffset){
+    console.log(currentOffset)
+    currentOffset = currentOffset + 10;
+    this.offset = currentOffset;
+    console.log(this.offset)
+    console.log(this.collection)
+}
 
 }
